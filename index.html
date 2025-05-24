@@ -137,7 +137,7 @@
                                             <option value="อื่นๆ">อื่นๆ</option>
                                         </select>
                                     </div>
-    
+
                                 <div class="col-md-6" style="margin-bottom: 10px;">
                                     <label for="fieldOfStudy"><i class="fas fa-atom fa-bounce"></i> สาขาวิชา</label>
                                         <select class="form-control" id="fieldOfStudy" name="fieldOfStudy" required>
@@ -147,7 +147,7 @@
                                             <option value="ชีววิทยา">ชีววิทยา</option>
                                         </select>
                                     </div>
-                                
+
                                 <div class="col-md-6" style="margin-bottom: 10px;">
                                     <label for="labRequested"><i class="fas fa-microscope fa-bounce"></i> จองห้อง</label>
                                         <select class="form-control" id="labRequested" name="labRequested" required>
@@ -157,18 +157,18 @@
                                             <option value="ห้องปฏิบัติการชีววิทยา">ห้องปฏิบัติการชีววิทยา</option>
                                         </select>
                                 </div>
-    
+
                                 <div class="col-md-6" style="margin-bottom: 10px;">
                                 <label for="startTime"><i class="fas fa-calendar-alt fa-bounce"></i> เริ่มวันที่</label>
                                         <input type="datetime-local" class="form-control" id="startTime" name="startTime" required>
                                 </div>
-    
+
                                 <div class="col-md-6" style="margin-bottom: 10px;">
                                 <label for="endTime"><i class="fas fa-calendar-check fa-bounce"></i> สิ้นสุดวันที่</label>
                                         <input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
                                 </div>
-    
-                                <div class="col-md-6" style="margin-bottom: 10px;"> 
+
+                                <div class="col-md-6" style="margin-bottom: 10px;">
                                 <label for="studentGrade"><i class="fas fa-chalkboard-teacher fa-bounce"></i> ห้องที่สอน </label>
                                         <input type="text" class="form-control" id="studentGrade" name="studentGrade" required placeholder="เช่น ม.4/1">
                                 </div>
@@ -177,12 +177,12 @@
                                 <label for="studentCount"><i class="fas fa-users fa-bounce"></i> จำนวนนักเรียน (ถ้ามี)</label>
                                         <input type="number" class="form-control" id="studentCount" name="studentCount" placeholder="เช่น 30">
                                 </div>
-                                
+
                                 <div class="col-md-6" style="margin-bottom: 10px;">
                                 <label for="topic"><i class="fas fa-book fa-bounce"></i> หัวข้อการสอน/ปฏิบัติการ</label>
                                     <input type="text" class="form-control" id="topic" name="topic" placeholder="เช่น ปฏิกิริยาเคมี">
                                 </div>
-    
+
                                 <div class="col-md-12" style="margin-bottom: 10px;">
                                 <label for="materialsNeeded"><i class="fas fa-tools fa-bounce"></i> สิ่งที่ต้องการ</label>
                                         <textarea class="form-control" id="materialsNeeded" name="materialsNeeded" rows="3" placeholder="ระบุรายการ"></textarea>
@@ -238,7 +238,7 @@
             <div class="modal-content">
                 <div class="modal-header panel-primary">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color:white;">&times;</span></button>
-                    <h4 class="modal-title" id="eventDetailModalLabel" style="color:white;"><i class="fas fa-info-circle"></i> รายละเอียดการจอง</h4>
+                    <h4 class="modal-title" id="eventDetailModalLabel" style="color:black;"><i class="fas fa-info-circle"></i> รายละเอียดการจอง</h4>
                 </div>
                 <div class="modal-body">
                     <p><strong><i class="fas fa-microscope"></i> ห้องที่จอง:</strong> <span id="eventLab"></span></p>
@@ -276,6 +276,7 @@
         let allFetchedBookings = []; // Holds all data fetched from the server
 
         document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOMContentLoaded: Event listener added"); // LOG 15
             const bookingForm = document.getElementById('bookingForm');
 
             initializeDatePickers();
@@ -293,7 +294,7 @@
                             return true;
                         }
                         var filterDateVal = $('#filterDate').val();
-                        var tableDateCell = data[1]; 
+                        var tableDateCell = data[1];
 
                         if (filterDateVal === '' || filterDateVal === null) {
                             return true;
@@ -322,18 +323,24 @@
 
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 const targetTab = e.target.hash;
+                console.log("Tab switched: targetTab -", targetTab); // LOG 16
                 if (targetTab === '#bookingTableTab') {
                     $($.fn.dataTable.tables(true)).DataTable().responsive.recalc().columns.adjust();
                 } else if (targetTab === '#calendarViewTab') {
+                    console.log("Calendar tab shown. bookingCalendarInstance -", bookingCalendarInstance); // LOG 17
                     if (bookingCalendarInstance) {
+                        console.log("Calendar tab: Calling updateSize()"); // LOG 18
                         bookingCalendarInstance.updateSize();
                     } else {
-                        // If calendar not initialized (e.g., initial load failed or tab opened before data ready)
-                        // try to initialize it using already fetched data or fetch again.
-                        if (allFetchedBookings.length > 0) {
+                        console.warn("Calendar tab: bookingCalendarInstance is null, attempting to re-initialize or fetch."); // LOG 19
+                        if (allFetchedBookings.length > 0 && document.getElementById('bookingCalendar')) {
+                             console.log("Calendar tab: Re-initializing with existing allFetchedBookings"); // LOG 20
                             initializeBookingCalendar(allFetchedBookings);
+                        } else if (document.getElementById('bookingCalendar')) {
+                            console.log("Calendar tab: No existing data, calling fetchBookingsAndInitTable()"); // LOG 21
+                            fetchBookingsAndInitTable();
                         } else {
-                            fetchBookingsAndInitTable(); // This will attempt to initialize the calendar
+                            console.error("Calendar tab: bookingCalendar element not found, cannot initialize."); // LOG 22
                         }
                     }
                 }
@@ -345,7 +352,6 @@
             const minDate = new Date(now);
             minDate.setMinutes(now.getMinutes() + 1); // Allow booking from the next minute
 
-            // Max booking date: 7 days from now, end of that day
             const maxDate = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
             maxDate.setHours(23, 59, 59, 999);
 
@@ -356,18 +362,15 @@
             };
 
             const minDateTimeLocal = formatDateTimeLocal(minDate);
-            // For max, we use the date part of maxDate and allow any time on that day up to 23:59 for selection,
-            // but the server will validate the actual 7-day window end time.
-            // The input max attribute primarily restricts the date picker part.
             const maxDateForPicker = formatDateTimeLocal(new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate(), 23, 59));
 
 
             document.getElementById('startTime').min = minDateTimeLocal;
-            document.getElementById('startTime').max = maxDateForPicker; // Max for date picker calendar
+            document.getElementById('startTime').max = maxDateForPicker;
             document.getElementById('endTime').min = minDateTimeLocal;
-            document.getElementById('endTime').max = maxDateForPicker;   // Max for date picker calendar
+            document.getElementById('endTime').max = maxDateForPicker;
         }
-        
+
         function formatUserDate(isoString) {
             if (!isoString) return '';
             const date = new Date(isoString);
@@ -390,11 +393,11 @@
             const newStart = new Date(start);
             const newEnd = new Date(end);
 
-            for (const booking of mockBookings) { // mockBookings contains simplified objects
+            for (const booking of mockBookings) {
                 if (booking.id === currentBookingId) continue;
 
                 if (booking.labRequested === lab) {
-                    const existingStart = new Date(booking.startTime); // Ensure these are Date objects
+                    const existingStart = new Date(booking.startTime);
                     const existingEnd = new Date(booking.endTime);
                     if (newStart < existingEnd && newEnd > existingStart) {
                         return true;
@@ -410,20 +413,19 @@
             const lab = document.getElementById('labRequested').value;
             const startTime = document.getElementById('startTime').value;
             const endTime = document.getElementById('endTime').value;
-            // Corrected requesterName retrieval
             const requesterName = document.getElementById('requesterName').value;
 
 
             const startDate = new Date(startTime);
             const endDate = new Date(endTime);
             const now = new Date();
-            
+
             const minAllowedStart = new Date(document.getElementById('startTime').min);
             const maxAllowedBookingDate = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
             maxAllowedBookingDate.setHours(23, 59, 59, 999);
 
 
-            if (startDate < minAllowedStart) { // Compare with the dynamic min set for the input
+            if (startDate < minAllowedStart) {
                  Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: 'ไม่สามารถเลือกวัน/เวลาเริ่มต้นในอดีตหรือปัจจุบันขณะได้ กรุณาเลือกเวลาในอนาคต' });
                  return;
             }
@@ -435,8 +437,7 @@
                 Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: 'สามารถจองล่วงหน้าได้ไม่เกิน 1 สัปดาห์เท่านั้น (นับถึงสิ้นสุดวันที่ 7)' });
                 return;
             }
-            
-            // Client-side overlap check (using simplified mockBookings)
+
             if (checkBookingOverlap(lab, startTime, endTime)) {
                 Swal.fire({
                     icon: 'warning',
@@ -480,7 +481,7 @@
                     });
                     event.target.reset();
                     initializeDatePickers();
-                    fetchBookingsAndInitTable(); // Refresh data for table and calendar
+                    fetchBookingsAndInitTable();
                     $('.nav-tabs a[href="#bookingTableTab"]').tab('show');
                 } else {
                     Swal.fire({
@@ -502,51 +503,57 @@
         function formatTableDateTime(dateTimeString) {
             if (!dateTimeString) return '';
             const date = new Date(dateTimeString);
-            return date.toLocaleString('th-TH', { 
+            return date.toLocaleString('th-TH', {
                 year: 'numeric', month: '2-digit', day: '2-digit',
                 hour: '2-digit', minute: '2-digit', hour12: false
-            }).replace(',', ''); 
+            }).replace(',', '');
         }
-        
+
         function getLabColor(labName) {
-            if (!labName) return '#777777'; // Default gray
-            if (labName.includes('ฟิสิกส์')) return '#007bff'; // Blue (Bootstrap primary)
-            if (labName.includes('เคมี')) return '#ffc107';    // Yellow/Orange (Bootstrap warning)
-            if (labName.includes('ชีววิทยา')) return '#28a745'; // Green (Bootstrap success)
-            return '#6c757d'; // Default gray (Bootstrap secondary)
+            if (!labName) return '#777777';
+            if (labName.includes('ฟิสิกส์')) return '#007bff';
+            if (labName.includes('เคมี')) return '#ffc107';
+            if (labName.includes('ชีววิทยา')) return '#28a745';
+            return '#6c757d';
         }
 
         function initializeBookingCalendar(bookingsData) {
+            console.log("initializeBookingCalendar: Function called with data -", bookingsData); // LOG 7
             const calendarEl = document.getElementById('bookingCalendar');
+            console.log("initializeBookingCalendar: calendarEl -", calendarEl); // LOG 8
+
             if (!calendarEl) {
-                console.error("Calendar element not found!");
+                console.error("Calendar element with ID 'bookingCalendar' not found!");
                 return;
             }
 
             const events = bookingsData.map(booking => ({
                 id: booking.bookingID || booking.id,
                 title: `${booking.labRequested || 'N/A'} (${booking.requesterName || 'N/A'})`,
-                start: booking.startTime, // Expects ISO 8601 string
-                end: booking.endTime,     // Expects ISO 8601 string
+                start: booking.startTime,
+                end: booking.endTime,
                 extendedProps: {
                     lab: booking.labRequested,
                     requester: booking.requesterName,
                     grade: booking.studentGrade,
                     topic: booking.topic,
                     materials: booking.materialsNeeded,
-                    startTimeFull: booking.startTime, // Keep original for modal
-                    endTimeFull: booking.endTime     // Keep original for modal
+                    startTimeFull: booking.startTime,
+                    endTimeFull: booking.endTime
                 },
                 color: getLabColor(booking.labRequested)
             }));
+            console.log("initializeBookingCalendar: Mapped events -", events); // LOG 9
 
             if (bookingCalendarInstance) {
+                console.log("initializeBookingCalendar: Destroying existing calendar instance"); // LOG 10
                 bookingCalendarInstance.destroy();
             }
 
+            console.log("initializeBookingCalendar: Creating new FullCalendar instance"); // LOG 11
             bookingCalendarInstance = new FullCalendar.Calendar(calendarEl, {
                 locale: 'th',
-                initialView: 'timeGridWeek',
+                initialView: 'dayGridMonth',
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -567,30 +574,31 @@
                 },
                 slotMinTime: '08:00:00',
                 slotMaxTime: '18:00:00',
-                height: 'auto', // Or a fixed height like 650
-                stickyHeaderDates: true, // For timeGrid views
+                height: 'auto',
+                stickyHeaderDates: true,
                 windowResize: function(arg) {
                     // This is often handled by updateSize on tab show
                 },
-                eventTimeFormat: { // Thai time format for events in calendar
+                eventTimeFormat: {
                     hour: '2-digit',
                     minute: '2-digit',
                     hour12: false,
                     meridiem: false
                 }
             });
-            
-            // Small delay to ensure the tab pane is visible before rendering, if called directly.
-            // However, the main rendering/updateSize is on tab 'shown.bs.tab'.
-            setTimeout(() => {
-                 if (calendarEl.offsetParent !== null) { // Check if element is visible
-                    bookingCalendarInstance.render();
-                 }
-            }, 50);
+
+            console.log("initializeBookingCalendar: Calendar instance created, about to render"); // LOG 12
+            try {
+                bookingCalendarInstance.render();
+                console.log("initializeBookingCalendar: render() called successfully"); // LOG 13
+            } catch (e) {
+                console.error("initializeBookingCalendar: Error during render() -", e); // LOG 14
+            }
         }
 
 
         async function fetchBookingsAndInitTable() {
+            console.log("fetchBookingsAndInitTable: Function called"); // LOG 1
             Swal.fire({
                 title: 'กำลังโหลดข้อมูลการจอง...',
                 text: 'กรุณารอสักครู่',
@@ -600,24 +608,28 @@
 
             try {
                 const response = await fetch(APPS_SCRIPT_WEB_APP_URL);
+                console.log("fetchBookingsAndInitTable: Fetch response status -", response.status); // LOG 2
                 if (!response.ok) {
                     const errorText = await response.text();
                     throw new Error(`HTTP error! Status: ${response.status}. ${errorText.substring(0,200)}`);
                 }
                 let fetchedBookingsFromServer = await response.json();
+                console.log("fetchBookingsAndInitTable: Fetched data from server -", fetchedBookingsFromServer); // LOG 3
+
 
                 if (!Array.isArray(fetchedBookingsFromServer)) {
                      console.warn("Fetched data is not an array, using empty array. Raw data:", fetchedBookingsFromServer);
                      fetchedBookingsFromServer = [];
                 }
-                
-                allFetchedBookings = fetchedBookingsFromServer; // Store for calendar use
 
-                // Populate mockBookings for client-side overlap check
+                allFetchedBookings = fetchedBookingsFromServer;
+                console.log("fetchBookingsAndInitTable: allFetchedBookings populated -", allFetchedBookings); // LOG 4
+
+
                 mockBookings = allFetchedBookings.map(b => ({
                     id: b.bookingID || b.id,
                     labRequested: b.labRequested,
-                    startTime: b.startTime, // These should be ISO strings
+                    startTime: b.startTime,
                     endTime: b.endTime,
                 }));
 
@@ -647,8 +659,8 @@
                         language: { url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Thai.json' },
                     });
                 }
-                
-                // Initialize or update calendar
+
+                console.log("fetchBookingsAndInitTable: About to call initializeBookingCalendar"); // LOG 5
                 initializeBookingCalendar(allFetchedBookings);
 
                 if ($('#bookingTableTab').hasClass('active') || !isDataTable) {
@@ -659,18 +671,18 @@
                 Swal.close();
 
             } catch (error) {
-                console.error("Error fetching bookings:", error);
+                console.error("Error fetching bookings:", error); // LOG 6
                 Swal.fire({
                     icon: 'error',
                     title: 'เกิดข้อผิดพลาดในการโหลดข้อมูล',
                     text: 'ไม่สามารถดึงข้อมูลการจองได้: ' + error.message
                 });
-                if (!$.fn.DataTable.isDataTable('#bookingTable')) { // Initialize empty table on error
+                if (!$.fn.DataTable.isDataTable('#bookingTable')) {
                     $('#bookingTable').DataTable({
                         responsive: true,
                         columns: [
                             { title: 'ห้องปฏิบัติการที่ขอใช้' }, { title: 'วัน/เวลาเริ่มต้น'},
-                            { title: 'วัน/เวลาสิ้นสุด'}, { title: 'ชื่อผู้ขอใช้' }, 
+                            { title: 'วัน/เวลาสิ้นสุด'}, { title: 'ชื่อผู้ขอใช้' },
                             { title: 'สอนนักเรียน ชั้น' }, { title: 'วัสดุ/อุปกรณ์/สารเคมี' }
                         ],
                         language: {
@@ -679,7 +691,6 @@
                         }
                     });
                 }
-                // Also show error in calendar div
                 const calendarEl = document.getElementById('bookingCalendar');
                 if (calendarEl) {
                     calendarEl.innerHTML = `<div class="alert alert-danger text-center">ขออภัย, ไม่สามารถโหลดข้อมูลปฏิทินได้: ${error.message}</div>`;
