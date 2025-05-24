@@ -380,19 +380,9 @@
         async function handleFormSubmit(event) {
             event.preventDefault();
 
-            const requesterName = document.getElementById('').value;
             const lab = document.getElementById('labRequested').value;
             const startTime = document.getElementById('startTime').value;
             const endTime = document.getElementById('endTime').value;
-
-            if (!validateNamePrefix(requesterName)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'ข้อมูลไม่ถูกต้อง',
-                    text: 'ชื่อผู้ขอใช้ต้องมีคำนำหน้า นาย, นาง, หรือ นางสาว ตามด้วยชื่อและนามสกุล (เช่น นายสมชาย ใจดี)',
-                });
-                return;
-            }
 
             const startDate = new Date(startTime);
             const endDate = new Date(endTime);
