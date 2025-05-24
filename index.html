@@ -177,9 +177,9 @@
                                 <label for="filterLab">กรองตามห้องปฏิบัติการ:</label>
                                 <select id="filterLab" class="form-control input-sm">
                                     <option value="">ทั้งหมด</option>
-                                    <option value="ฟิสิกส์">ห้องปฏิบัติการฟิสิกส์</option>
-                                    <option value="เคมี">ห้องปฏิบัติการเคมี</option>
-                                    <option value="ชีววิทยา">ห้องปฏิบัติการชีววิทยา</option>
+                                    <option value="ห้องปฏิบัติการฟิสิกส์">ห้องปฏิบัติการฟิสิกส์</option>
+                                    <option value="ห้องปฏิบัติการเคมี">ห้องปฏิบัติการเคมี</option>
+                                    <option value="ห้องปฏิบัติการชีววิทยา">ห้องปฏิบัติการชีววิทยา</option>
                                 </select>
                             </div>
                             <div class="col-md-6 form-group">
@@ -193,13 +193,13 @@
                                     <tr>
                                         <th>ห้องปฏิบัติการที่ขอใช้</th>
                                         <th>วัน/เวลาเริ่มต้น</th>
+                                        <th>วัน/เวลาสิ้นสุด</th>
                                         <th>ชื่อผู้ขอใช้</th>
                                         <th>สอนนักเรียน ชั้น</th>
                                         <th>วัสดุ/อุปกรณ์/สารเคมี</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* Data will be populated by DataTables */}
                                 </tbody>
                             </table>
                         </div>
@@ -241,6 +241,7 @@
                             return true;
                         }
                         var filterDateVal = $('#filterDate').val();
+                        // Assuming start time is in column 1, and end time will be column 2 after adding it
                         var tableDateCell = data[1]; 
 
                         if (filterDateVal === '' || filterDateVal === null) {
@@ -462,10 +463,10 @@
                 }
 
                 mockBookings = fetchedBookingsFromServer.map(b => ({
-                    id: b.bookingID || b.id,
+                    id: b.bookingID || b.id, // Ensure id is mapped, using bookingID from server
                     labRequested: b.labRequested,
                     startTime: b.startTime,
-                    endTime: b.endTime,
+                    endTime: b.endTime, // Ensure endTime is mapped from server data
                 }));
 
                 const dataToDisplay = fetchedBookingsFromServer;
@@ -480,12 +481,22 @@
                             { data: 'labRequested', title: 'ห้องปฏิบัติการ' },
                             {
                                 data: 'startTime',
-                                title: 'วัน/เวลา',
+                                title: 'วัน/เวลาเริ่มต้น', // Changed title for clarity
                                 render: function(data, type, row) {
-                                    if (type === 'display') { // For DataTable display
+                                    if (type === 'display') { 
                                         return formatTableDateTime(data);
                                     }
-                                    return data; // Raw data for sorting/filtering
+                                    return data; 
+                                }
+                            },
+                            { // New column for End Time
+                                data: 'endTime', // Make sure 'endTime' exists in your fetched data objects
+                                title: 'วัน/เวลาสิ้นสุด',
+                                render: function(data, type, row) {
+                                    if (type === 'display') {
+                                        return formatTableDateTime(data);
+                                    }
+                                    return data;
                                 }
                             },
                             { data: 'requesterName', title: 'ชื่อผู้ขอใช้' },
@@ -493,7 +504,7 @@
                             { data: 'materialsNeeded', title: 'วัสดุ/อุปกรณ์/สารเคมี' }
                         ],
                         responsive: true,
-                        order: [[1, 'desc']],
+                        order: [[1, 'desc']], // Default sort by start time
                         language: {
 							url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Thai.json'
 						},
@@ -516,9 +527,12 @@
                 if (!$.fn.DataTable.isDataTable('#bookingTable')) {
                     $('#bookingTable').DataTable({
                         responsive: true,
-                        columns: [
-                            { title: 'ห้องปฏิบัติการที่ขอใช้' }, { title: 'วัน/เวลาเริ่มต้น'},
-                            { title: 'ชื่อผู้ขอใช้' }, { title: 'สอนนักเรียน ชั้น' },
+                        columns: [ // Adjusted for the new column
+                            { title: 'ห้องปฏิบัติการที่ขอใช้' }, 
+                            { title: 'วัน/เวลาเริ่มต้น'},
+                            { title: 'วัน/เวลาสิ้นสุด'}, // Added title for error state
+                            { title: 'ชื่อผู้ขอใช้' }, 
+                            { title: 'สอนนักเรียน ชั้น' },
                             { title: 'วัสดุ/อุปกรณ์/สารเคมี' }
                         ],
                         language: {
