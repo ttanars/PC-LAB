@@ -85,7 +85,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <h2 class="text-center" style="margin-bottom: 20px;"><small><i class="fas fa-flask-vial"></i><b> ระบบจองห้องปฏิบัติการวิทยาศาสตร์</b></small></h2>
+        <h2 class="text-center" style="margin-bottom: 20px; text-align: center; background-color : #fcff63; color:#0a0a0a;font-mt-5; font-mb-5; font-weight: 600; border-bottom: 2px solid var(--step-line-color); padding-bottom: 20px; padding-top: 20px; margin-top: 5px; margin-bottom: 20px;"><i class="fas fa-flask-vial"></i><b> ระบบจองห้องปฏิบัติการวิทยาศาสตร์</b></h2>
 
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#bookingFormTab" aria-controls="bookingFormTab" role="tab" data-toggle="tab"><i class="fas fa-edit"></i> แบบฟอร์มการจอง</a></li>
@@ -116,24 +116,24 @@
 					<option value="อ.ธนสาร">อ.ธนสาร</option>
                                         <option value="อ.ณัฐชา">อ.ณัฐชา</option>
                                         <option value="อ.สุจิตตรา">อ.สุจิตตรา</option>
-										<option value="อ.จุฑามาศ">อ.จุฑามาศ</option>
-										<option value="อ.ปัทมา">อ.ปัทมา</option>
+					<option value="อ.จุฑามาศ">อ.จุฑามาศ</option>
+					<option value="อ.ปัทมา">อ.ปัทมา</option>
                                         <option value="อ.จริญญา">อ.จริญญา</option>
                                         <option value="อ.แสนชัย">อ.แสนชัย</option>
-										<option value="อ.นันทวัฒน์">อ.นันทวัฒน์</option>
-										<option value="อ.รังสรรค์">อ.รังสรรค์</option>
+					<option value="อ.นันทวัฒน์">อ.นันทวัฒน์</option>
+					<option value="อ.รังสรรค์">อ.รังสรรค์</option>
                                         <option value="อ.บุญโย">อ.บุญโย</option>
                                         <option value="อ.สุภัค">อ.สุภัค</option>
-										<option value="อ.พิมล">อ.พิมล</option>
-										<option value="อ.สุดา">อ.สุดา</option>
+					<option value="อ.พิมล">อ.พิมล</option>
+					<option value="อ.สุดา">อ.สุดา</option>
                                         <option value="อ.กิตติมา">อ.กิตติมา</option>
-										<option value="อ.ณภัชนันท์">อ.ณภัชนันท์</option>
-										<option value="อ.ปริชาติ">อ.ปริชาติ</option>
+					<option value="อ.ณภัชนันท์">อ.ณภัชนันท์</option>
+					<option value="อ.ปริชาติ">อ.ปริชาติ</option>
                                         <option value="อ.ฉัตรฉัย">อ.ฉัตรฉัย</option>
                                         <option value="อ.อรนุช">อ.อรนุช</option>
-										<option value="อ.กนิษฐา">อ.กนิษฐา</option>
-										<option value="อ.สุนิษา">อ.สุนิษา</option>
-										<option value="อื่นๆ">อื่นๆ</option>
+					<option value="อ.กนิษฐา">อ.กนิษฐา</option>
+					<option value="อ.สุนิษา">อ.สุนิษา</option>
+					<option value="อื่นๆ">อื่นๆ</option>
                                     </select>
                                 </div>
                             </div>
@@ -380,9 +380,19 @@
         async function handleFormSubmit(event) {
             event.preventDefault();
 
+            const requesterName = document.getElementById('').value;
             const lab = document.getElementById('labRequested').value;
             const startTime = document.getElementById('startTime').value;
             const endTime = document.getElementById('endTime').value;
+
+            if (!validateNamePrefix(requesterName)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ข้อมูลไม่ถูกต้อง',
+                    text: 'ชื่อผู้ขอใช้ต้องมีคำนำหน้า นาย, นาง, หรือ นางสาว ตามด้วยชื่อและนามสกุล (เช่น นายสมชาย ใจดี)',
+                });
+                return;
+            }
 
             const startDate = new Date(startTime);
             const endDate = new Date(endTime);
