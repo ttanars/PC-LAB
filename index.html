@@ -2,9 +2,8 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC|Science LAB v1</title> <link rel="shortcut icon" type="image/png" href="https://img2.pic.in.th/pic/Pakchong_School-removebg-preview.png">
+    <title>ระบบจองห้องปฏิบัติการวิทยาศาสตร์</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" xintegrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -43,7 +42,8 @@
             border-color: #0056b3;
         }
         .input-group-addon {
-            min-width: 120px;
+            //min-width: 120px;
+			min-width: auto;
             text-align: left;
         }
         .input-group-addon .fas {
@@ -91,14 +91,14 @@
         <h3 class="text-center" style="margin-bottom: 20px; text-align: center; background-color : #fcff63; color:#0a0a0a;font-mt-5; font-mb-5; font-weight: 300; border-bottom: 2px solid var(--step-line-color); padding-bottom: 20px; padding-top: 20px; margin-top: 5px; margin-bottom: 20px;"><i class="fas fa-flask-vial"></i><b> ระบบจองห้องปฏิบัติการวิทยาศาสตร์</b></h3>
 
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#bookingFormTab" aria-controls="bookingFormTab" role="tab" data-toggle="tab"><i class="fas fa-edit"></i> บันทึกการจอง</a></li>
+            <li role="presentation" class="active"><a href="#bookingFormTab" aria-controls="bookingFormTab" role="tab" data-toggle="tab"><i class="fas fa-edit"></i> แบบฟอร์มการจอง</a></li>
             <li role="presentation"><a href="#bookingTableTab" aria-controls="bookingTableTab" role="tab" data-toggle="tab"><i class="fas fa-table"></i> ข้อมูลการจอง</a></li>
         </ul>
 
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="bookingFormTab">
-                <div class="panel panel-primary" style="margin-top:0; box-shadow: none; border: none;">
-                    <div class="panel-body" style="padding:0;">
+                <div class="panel panel-primary" style="margin-top:2px; box-shadow: none; border: none;">
+                    <div class="panel-body" style="padding:5px; mb-5">
                         <form id="bookingForm">
                             <!--<div class="form-group form-spacing">
                                 <label for="requesterName">ชื่อผู้ขอใช้:</label>
@@ -109,10 +109,9 @@
                                 <p id="namePrefixHelp" class="help-block">ต้องมีคำนำหน้า นาย, นาง, หรือ นางสาว</p>
                             </div>-->
 
-							<div class="form-group form-spacing">
-                                <label for="fieldOfStudy">ชื่อผู้ขอใช้:</label>
+							<div class="col-md-6" style="margin-bottom: 10px;">
                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                                    <span class="input-group-addon"><i class="fas fa-user"></i>ชื่อผู้จอง: </span>
                                     <select class="form-control" id="requesterName" name="requesterName" required>
                                         <option value="" disabled selected>เลือก...</option>
                                         <option value="อ.ธนบดี">อ.ธนบดี</option>
@@ -141,15 +140,10 @@
                                 </div>
                             </div>
 
-
-
-
-
-
-                            <div class="form-group form-spacing">
-                                <label for="fieldOfStudy">สาขาวิชา:</label>
+							
+							<div class="col-md-6" style="margin-bottom: 10px;">
                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-atom"></i></span>
+                                    <span class="input-group-addon"><i class="fas fa-atom"></i>สาขาวิชา: </span>
                                     <select class="form-control" id="fieldOfStudy" name="fieldOfStudy" required>
                                         <option value="" disabled selected>เลือกสาขาวิชา...</option>
                                         <option value="ฟิสิกส์">ฟิสิกส์</option>
@@ -159,10 +153,9 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-spacing">
-                                <label for="labRequested">ห้องปฏิบัติการที่ขอใช้:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-microscope"></i></span>
+							<div class="col-md-6" style="margin-bottom: 10px;">
+                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-microscope"></i>จองห้อง </span>
                                     <select class="form-control" id="labRequested" name="labRequested" required>
                                         <option value="" disabled selected>เลือกห้องปฏิบัติการ...</option>
                                         <option value="ฟิสิกส์">ห้องปฏิบัติการฟิสิกส์</option>
@@ -172,36 +165,30 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-spacing">
-                                <label for="startTime">วัน/เวลาเริ่มต้น:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+							<div class="col-md-6" style="margin-bottom: 10px;">
+                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-calendar-alt"></i>เริ่มวันที่ </span>
                                     <input type="datetime-local" class="form-control" id="startTime" name="startTime" required>
                                 </div>
-                                <p class="help-block">จองล่วงหน้าได้ไม่เกิน 1 สัปดาห์</p>
                             </div>
 
-                            <div class="form-group form-spacing">
-                                <label for="endTime">วัน/เวลาสิ้นสุด:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-calendar-check"></i></span>
+							<div class="col-md-6" style="margin-bottom: 10px;">
+                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-calendar-check"></i>สิ้นสุดวันที่ </span>
                                     <input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
                                 </div>
-                                 <p class="help-block">จองล่วงหน้าได้ไม่เกิน 1 สัปดาห์</p>
                             </div>
 
-                            <div class="form-group form-spacing">
-                                <label for="studentGrade">สอนนักเรียน ชั้น:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-chalkboard-teacher"></i></span>
+							<div class="col-md-6" style="margin-bottom: 10px;">
+                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-chalkboard-teacher"></i>นักเรียน ชั้น</span>
                                     <input type="text" class="form-control" id="studentGrade" name="studentGrade" required placeholder="เช่น ม.4/1">
                                 </div>
                             </div>
 
-                            <div class="form-group form-spacing">
-                                <label for="materialsNeeded">วัสดุ/อุปกรณ์/สารเคมี ที่ต้องการ:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-tools"></i></span>
+							<div class="col-md-12" style="margin-bottom: 10px;">
+                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-tools"></i>วัสดุ/อุปกรณ์/สารเคมี ที่ต้องการ </span>
                                     <textarea class="form-control" id="materialsNeeded" name="materialsNeeded" rows="3" placeholder="ระบุรายการ"></textarea>
                                 </div>
                             </div>
@@ -253,7 +240,7 @@
 	<footer style="text-align: center;background-color:#faff99; padding: 10px 0; margin-top: 10px; border-top: 1px solid #e0e0e0; font-size: 0.9em; color: #555; width: 100%;">
     :: Created and Develop by KT|Tanasarn Sirak ::
 	<div class="container text-center">
-	<a href="https://line.me/ti/p/3F7VGrqgUr" target="_blank"><i class="fa-solid fa-comments"></i></a> <a style="color:red;text-decoration:none;font-size:12px" href="https://line.me/ti/p/3F7VGrqgUr" target="_blank"> สอบถาม/แจ้งปัญหา :: <span style="font-size:12px;color:black"></a>
+	<a href="https://line.me/ti/p/3F7VGrqgUr" target="_blank"><i class="fa-solid fa-comments"></i></a> <a style="color:red;text-decoration:none;font-size:12px" href="https://line.me/ti/p/3F7VGrqgUr" target="_blank"> สอบถาม/แจ้งปัญหา :: <span style="font-size:12px;color:black">KT | Tanasarn Sirak © <script>document.write(new Date().getFullYear()+543)</script> </a>
 	</div>
 </footer>
         </div>
