@@ -173,15 +173,6 @@
                                         <input type="text" class="form-control" id="studentGrade" name="studentGrade" required placeholder="เช่น ม.4/1">
                                 </div>
 
-                                <div class="col-md-6" style="margin-bottom: 10px;">
-                                <label for="studentCount"><i class="fas fa-users fa-bounce"></i> จำนวนนักเรียน (ถ้ามี)</label>
-                                        <input type="number" class="form-control" id="studentCount" name="studentCount" placeholder="เช่น 30">
-                                </div>
-
-                                <div class="col-md-6" style="margin-bottom: 10px;">
-                                <label for="topic"><i class="fas fa-book fa-bounce"></i> หัวข้อการสอน/ปฏิบัติการ</label>
-                                    <input type="text" class="form-control" id="topic" name="topic" placeholder="เช่น ปฏิกิริยาเคมี">
-                                </div>
 
                                 <div class="col-md-12" style="margin-bottom: 10px;">
                                 <label for="materialsNeeded"><i class="fas fa-tools fa-bounce"></i> สิ่งที่ต้องการ</label>
@@ -246,7 +237,6 @@
                     <p><strong><i class="fas fa-calendar-alt"></i> วันที่เริ่มต้น:</strong> <span id="eventStart"></span></p>
                     <p><strong><i class="fas fa-calendar-check"></i> วันที่สิ้นสุด:</strong> <span id="eventEnd"></span></p>
                     <p><strong><i class="fas fa-chalkboard-teacher"></i> สอนห้อง:</strong> <span id="eventGrade"></span></p>
-                    <p><strong><i class="fas fa-book"></i> หัวข้อ:</strong> <span id="eventTopic"></span></p>
                     <p><strong><i class="fas fa-tools"></i> สิ่งที่ต้องการ:</strong> <span id="eventMaterials"></span></p>
                 </div>
                 <div class="modal-footer">
@@ -536,7 +526,6 @@
                     lab: booking.labRequested,
                     requester: booking.requesterName,
                     grade: booking.studentGrade,
-                    topic: booking.topic,
                     materials: booking.materialsNeeded,
                     startTimeFull: booking.startTime,
                     endTimeFull: booking.endTime
@@ -567,7 +556,6 @@
                     document.getElementById('eventStart').textContent = formatTableDateTime(props.startTimeFull);
                     document.getElementById('eventEnd').textContent = formatTableDateTime(props.endTimeFull);
                     document.getElementById('eventGrade').textContent = props.grade || '-';
-                    document.getElementById('eventTopic').textContent = props.topic || '-';
                     document.getElementById('eventMaterials').textContent = props.materials || '-';
 
                     $('#eventDetailModal').modal('show');
@@ -651,7 +639,7 @@
                                 render: data => formatTableDateTime(data)
                             },
                             { data: 'requesterName', title: 'ชื่อผู้ขอใช้' },
-                            { data: 'studentGrade', title: 'สอนนักเรียน ชั้น' },
+                            { data: 'studentGrade', title: 'ห้องที่สอน' },
                             { data: 'materialsNeeded', title: 'วัสดุ/อุปกรณ์/สารเคมี' }
                         ],
                         responsive: true,
@@ -683,7 +671,7 @@
                         columns: [
                             { title: 'ห้องปฏิบัติการที่ขอใช้' }, { title: 'วัน/เวลาเริ่มต้น'},
                             { title: 'วัน/เวลาสิ้นสุด'}, { title: 'ชื่อผู้ขอใช้' },
-                            { title: 'สอนนักเรียน ชั้น' }, { title: 'วัสดุ/อุปกรณ์/สารเคมี' }
+                            { title: 'ห้องที่สอน' }, { title: 'วัสดุ/อุปกรณ์/สารเคมี' }
                         ],
                         language: {
                             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Thai.json',
