@@ -15,6 +15,31 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
 
     <style>
+	
+				.modal {
+			  text-align: center;
+			  /* Override Bootstrap .modal padding if it exists due to scrollbar handling */
+			  padding-left: 0 !important;
+			  padding-right: 0 !important;
+			}
+
+			@media screen and (min-width: 768px) { /* Bootstrap's 'sm' breakpoint */
+			  .modal:before {
+				content: " ";
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+				margin-right: -4px; /* Adjusts for spacing, optional */
+			  }
+			}
+
+			.modal-dialog {
+			  display: inline-block;
+			  text-align: left; /* Reset text-align for the dialog content */
+			  vertical-align: middle;
+			}
+	
+	
         body {
             font-family: 'Niramit', sans-serif;
             background-color: #f8f9fa;
@@ -91,6 +116,63 @@
         .fc-event {
             cursor: pointer;
         }
+		
+		/* ปรับขนาดตัวอักษรของชื่อเดือนใน FullCalendar toolbar */
+		.fc .fc-toolbar-title {
+		  font-size: 1.1em; /* คุณสามารถปรับขนาดตามต้องการ เช่น 1.0em, 16px, หรือ 90% */
+		}
+		/* ปรับขนาดปุ่มบน Toolbar ของ FullCalendar */
+		.fc .fc-button {
+		  font-size: 0.85em; /* ลดขนาดตัวอักษรของปุ่ม */
+		  padding: 5px 8px;  /* ลด padding ภายในปุ่ม (ค่าแรกคือ บน-ล่าง, ค่าสองคือ ซ้าย-ขวา) */
+		}
+		
+		/* เติมสีหัวปฏิทิน FullCalendar */
+		.fc .fc-header-toolbar {
+		  background-color: #007bff; /* สีพื้นหลังของ header */
+		  color: white;             /* สีข้อความหลักใน header */
+		  padding: 8px 5px;         /* เพิ่ม padding ให้พอเหมาะ */
+		  margin-bottom: 0px;       /* อาจไม่จำเป็น แต่เผื่อไว้กรณีมี margin ด้านล่าง */
+		  border: 1px solid #007bff; /* เพิ่มเส้นขอบสีเดียวกับพื้นหลัง */
+		}
+
+		/* ปรับสีปุ่มภายใน header ที่มีสีพื้นหลังใหม่ */
+		.fc .fc-header-toolbar .fc-button {
+		  background-color: #0056b3; /* สีพื้นหลังของปุ่ม (เข้มกว่า header เล็กน้อย) */
+		  border-color: #004085;     /* สีเส้นขอบของปุ่ม */
+		  color: white;              /* สีข้อความบนปุ่ม */
+		  /* font-size: 0.85em; (กำหนดไว้แล้วในส่วนปรับขนาดปุ่ม) */
+		  /* padding: 5px 8px;  (กำหนดไว้แล้วในส่วนปรับขนาดปุ่ม) */
+		}
+
+		/* สไตล์ปุ่มเมื่อ hover, focus, หรือ active */
+		.fc .fc-header-toolbar .fc-button:hover,
+		.fc .fc-header-toolbar .fc-button:focus,
+		.fc .fc-header-toolbar .fc-button:active,
+		.fc .fc-header-toolbar .fc-button.fc-button-active { /* สำหรับปุ่ม view ที่ active */
+		  background-color: #004085; /* สีพื้นหลังเมื่อปุ่มถูกใช้งาน (เข้มขึ้นอีก) */
+		  border-color: #003065;
+		  color: white;
+		}
+
+		/* ทำให้ชื่อเดือน (title) ใน header เป็นสีขาว และคงขนาดที่ปรับไว้ */
+		.fc .fc-header-toolbar .fc-toolbar-title {
+		  color: white !important; /* กำหนดสีข้อความของ title เป็นสีขาว */
+		  /* font-size: 1.1em; (กำหนดไว้แล้วในส่วนปรับขนาดชื่อเดือน) */
+		}
+		
+		/* เติมสีแถวส่วนหัวของวัน (อาทิตย์, จันทร์, อังคาร, ...) */
+		.fc .fc-col-header-cell {
+		  background-color: #e9ecef; /* สีเทาอ่อน คล้ายๆ กับหัวตารางทั่วไป */
+		  color: #495057;             /* สีข้อความสำหรับชื่อวัน */
+		}
+
+		/* ปรับแต่งเพิ่มเติมสำหรับข้อความภายในเซลล์วัน (ถ้าต้องการ) */
+		.fc .fc-col-header-cell-cushion { /* element ที่ครอบข้อความชื่อวัน */
+		  color: #495057; /* ให้แน่ใจว่าสีข้อความสอดคล้องกัน */
+		  /* padding: 5px; /* สามารถเพิ่ม padding ได้หากต้องการ */
+		}
+
 		.banner img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; display: block; background-color: #eee; border: 1px solid var(--border-color); }
     </style>
 </head>
@@ -100,7 +182,7 @@
     <div class="card-body p-3 p-md-4">
 	 <div class="banner">
                  <img src="https://lh5.googleusercontent.com/d/1Ihnlbpt0aCgC4rC7M8lIHymAQkkRnY1Q" alt="Form Banner"> </div>
-        <h3 class="text-center" style="margin-bottom: 20px; text-align: center; background-color : #353ffc; color:#faf7f7;font-mt-5; font-mb-5; font-weight: 300; border-bottom: 2px solid var(--step-line-color); padding-bottom: 20px; padding-top: 20px; margin-top: 5px; margin-bottom: 20px;"><i class="fas fa-flask-vial"></i><b> ระบบจองห้องปฏิบัติการวิทยาศาสตร์</b></h3>
+    <!---<h3 class="text-center" style="margin-bottom: 20px; text-align: center; background-color : #353ffc; color:#faf7f7;font-mt-5; font-mb-5; font-weight: 300; border-bottom: 2px solid var(--step-line-color); padding-bottom: 20px; padding-top: 20px; margin-top: 5px; margin-bottom: 20px;"><i class="fas fa-flask-vial"></i><b> ระบบจองห้องปฏิบัติการวิทยาศาสตร์</b></h3>--->
 
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#bookingFormTab" aria-controls="bookingFormTab" role="tab" data-toggle="tab"><i class="fas fa-edit"></i> แบบฟอร์มการจอง</a></li>
@@ -228,11 +310,13 @@
 		</div>
     </div>
 
-    <div class="modal fade" id="eventDetailModal" tabindex="-1" role="dialog" aria-labelledby="eventDetailModalLabel">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="eventDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header panel-primary">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color:white;">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
                     <h4 class="modal-title" id="eventDetailModalLabel" style="color:black;"><i class="fas fa-info-circle"></i> รายละเอียดการจอง</h4>
                 </div>
                 <div class="modal-body">
@@ -244,8 +328,8 @@
                     <p><strong><i class="fas fa-tools"></i> สิ่งที่ต้องการ:</strong> <span id="eventMaterials"></span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-                </div>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
             </div>
         </div>
     </div>
