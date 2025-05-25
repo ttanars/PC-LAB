@@ -15,6 +15,11 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
 
     <style>
+	
+			 .swal-modal .swal-text {
+				text-align: center;
+			}
+	
 			/* Custom class for larger SweetAlert with increased height and font size */
 			.swal2-popup.swal-custom-large {
 				width: 450px !important;    /* กำหนดความกว้างตามต้องการ */
@@ -22,11 +27,13 @@
 				font-size: 1.1em !important;  /* เพิ่มขนาดตัวอักษรโดยรวมของ alert */
 				padding-top: 20px !important; /* เพิ่ม padding ด้านบน */
 				padding-bottom: 20px !important;/* เพิ่ม padding ด้านล่าง */
+				text-align: center;
 			}
 
 			.swal-custom-large .swal2-title {
 				font-size: 1.7em !important;
 				margin-bottom: 15px !important;
+				text-align: center;
 			}
 
 			.swal-custom-large .swal2-html-container {
@@ -43,15 +50,18 @@
 				font-size: 1.2em !important;
 				height: auto !important;
 				padding: 10px !important;
+				text-align: center;
 			}
 
 			.swal-custom-large .swal2-actions button {
 				font-size: 1em !important;
 				padding: 10px 20px !important;
                 margin: 5px !important;
+				text-align: center;
 			}
 			.swal-custom-large .swal2-validation-message {
 				font-size: 1em !important;
+				text-align: center;
 			}
 			
         body {
@@ -334,7 +344,7 @@
             <div class="modal-content">
                 <div class="modal-header panel-primary">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color:white;">×</span></button>
-                    <h4 class="modal-title" id="eventDetailModalLabel" style="color:white;"><i class="fas fa-info-circle"></i> รายละเอียดการจอง</h4>
+                    <h4 class="modal-title" id="eventDetailModalLabel" style="color:black;"><i class="fas fa-info-circle"></i> รายละเอียดการจอง</h4>
                 </div>
                 <div class="modal-body">
                     <p><strong><i class="fas fa-microscope"></i> ห้องที่จอง:</strong> <span id="eventLab"></span></p>
@@ -403,11 +413,25 @@
         }
 
         async function promptForTeacherCode() {
-            validTeacherCodesStore = await fetchTeacherCodesFromServer();
-
-            if (validTeacherCodesStore === null) { 
-                return false; 
+            // Fetch teacher codes only if not already fetched or if the store is empty/null
+            if (!validTeacherCodesStore || validTeacherCodesStore.length === 0) {
+                validTeacherCodesStore = await fetchTeacherCodesFromServer();
             }
+
+            // Handle failure to fetch teacher codes from the server
+            if (validTeacherCodesStore === null) {
+                Swal.fire({
+                    title: 'ข้อผิดพลาดในการโหลดข้อมูล',
+                    text: 'ไม่สามารถดึงข้อมูลรหัสครูจากเซิร์ฟเวอร์ได้ กรุณารีเฟรชหรือติดต่อผู้ดูแลระบบ',
+                    icon: 'error',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    customClass: { popup: 'swal-custom-large' }
+                });
+                return false; // Critical failure, cannot proceed
+            }
+
+            // Handle case where no teacher codes are configured in the system
             if (validTeacherCodesStore.length === 0) {
                 Swal.fire({
                     icon: 'warning',
@@ -415,47 +439,68 @@
                     text: 'ไม่พบรหัสครูผู้สอนที่สามารถใช้งานได้ในระบบ กรุณาติดต่อผู้ดูแลระบบ',
                     allowOutsideClick: false,
                     allowEscapeKey: false,
-					customClass: { 
-					popup: 'swal-custom-large'
-					},
+                    customClass: { popup: 'swal-custom-large' },
                 });
-                return false; 
+                return false; // Cannot proceed without codes
             }
 
-            const { value: enteredCode } = await Swal.fire({
-                title: 'กรุณาใส่รหัสครูผู้สอน',
-                input: 'password',
-                inputPlaceholder: 'รหัสครู 4 หลัก',
-                inputAttributes: {
-                    maxlength: 4,
-                    autocapitalize: 'off',
-                    autocorrect: 'off'
-                },
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                confirmButtonText: 'ตกลง',
-                showLoaderOnConfirm: true,
-				customClass: { 
-                popup: 'swal-custom-large'
-				},
-                preConfirm: (code) => {
-                    if (!code || !/^\d{4}$/.test(code)) {
-                        Swal.showValidationMessage('รหัสครูต้องเป็นตัวเลข 4 หลัก');
-                        return false;
+            // Loop to keep prompting for the code until valid input or unexpected dismissal
+            while (true) {
+                const result = await Swal.fire({
+                    title: 'กรุณาใส่รหัสครูผู้สอน',
+                    input: 'password',
+                    inputLabel: "รหัสครูผู้สอนของคุณ", // Existing label from v5
+                    inputPlaceholder: 'รหัสครู 4 หลัก',
+                    inputAttributes: {
+                        maxlength: 4,
+                        autocapitalize: 'off',
+                        autocorrect: 'off'
+                    },
+                    allowOutsideClick: false,    // Prevent closing by clicking outside
+                    allowEscapeKey: false,       // Prevent closing with Escape key
+                    confirmButtonText: 'ตกลง',
+                    showCancelButton: true,      // Shows the cancel button
+                    cancelButtonText: 'ยกเลิก', // Text for the cancel button
+                    showLoaderOnConfirm: true,
+                    customClass: {
+                        popup: 'swal-custom-large'
+                    },
+                    preConfirm: (code) => {
+                        if (!code || !/^\d{4}$/.test(code)) {
+                            Swal.showValidationMessage('รหัสครูต้องเป็นตัวเลข 4 หลัก');
+                            return false; // Keeps the prompt open
+                        }
+                        if (!validTeacherCodesStore.includes(code)) {
+                            Swal.showValidationMessage('รหัสครูไม่ถูกต้อง');
+                            return false; // Keeps the prompt open
+                        }
+                        return code; // Code is valid
                     }
-                    if (!validTeacherCodesStore.includes(code)) {
-                        Swal.showValidationMessage('รหัสครูไม่ถูกต้อง');
-                        return false;
-                    }
-                    return code; 
+                });
+
+                if (result.isConfirmed && result.value) {
+                    // User entered a valid code and clicked "ตกลง"
+                    Swal.fire({ icon: 'success', title: 'ยืนยันรหัสสำเร็จ!', timer: 1000, showConfirmButton: false, customClass: { popup: 'swal-custom-large' } });
+                    return true; // Exit loop and function, authentication successful
+                } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
+                    // User clicked "ยกเลิก", the loop will continue, re-prompting.
+                    console.log("User cancelled authentication prompt. Re-prompting.");
+                } else {
+                    // Handles unexpected dismissal (should not happen with current settings)
+                    // Or if result.isConfirmed is false without a specific cancel dismissal.
+                    console.log("Authentication prompt dismissed unexpectedly or failed. Result:", result);
+                    // Show a generic error and treat as auth failure to prevent infinite loops.
+                     Swal.fire({
+                        icon: 'error',
+                        title: 'การยืนยันตัวตนถูกยกเลิก',
+                        text: 'เกิดปัญหาในการยืนยันตัวตน กรุณาลองใหม่อีกครั้ง หรือติดต่อผู้ดูแลระบบหากปัญหายังคงอยู่',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        customClass: { popup: 'swal-custom-large' }
+                    });
+                    return false; // Exit function, authentication failed
                 }
-            });
-
-            if (enteredCode) {
-                Swal.fire({ icon: 'success', title: 'ยืนยันรหัสสำเร็จ!', timer: 1000, showConfirmButton: false, customClass: { popup: 'swal-custom-large' } });
-                return true; 
             }
-            return false; 
         }
 
         function initializePageEventListeners() {
@@ -549,6 +594,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', async function() {
+			event.preventDefault();
             console.log("DOMContentLoaded: Initiating teacher code authentication.");
             const isAuthenticated = await promptForTeacherCode();
             if (isAuthenticated) {
@@ -561,6 +607,7 @@
                  const bodyElement = document.querySelector('body');
                  if (bodyElement && !document.querySelector('#authFailedMessage')) { 
                     const authFailedMessage = document.createElement('div');
+					document.getElementById('mainContent').style.display = 'block';
                     authFailedMessage.id = 'authFailedMessage';
                     authFailedMessage.className = 'alert alert-danger text-center';
                     authFailedMessage.setAttribute('role', 'alert');
@@ -873,13 +920,13 @@
 
 
         async function fetchBookingsAndInitTable() {
-            Swal.fire({ // Initial "Loading..." message
-                title: 'กำลังโหลดข้อมูลการจอง...',
-                text: 'กรุณารอสักครู่',
-                allowOutsideClick: false,
-                customClass: { popup: 'swal-custom-large' },
-                didOpen: () => { Swal.showLoading(); }
-            });
+			 Swal.fire({
+				  icon: "success",
+				  title: "success",
+				  showConfirmButton: false,
+				  timer: 1500,
+				  customClass: { popup: 'swal-custom-large' }
+				});
 		
             try {
                 const response = await fetch(APPS_SCRIPT_WEB_APP_URL); 
