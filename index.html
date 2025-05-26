@@ -629,7 +629,7 @@
             const today = now.toISOString().split('T')[0]; 
             bookingDateEl.min = today;
             const maxDate = new Date();
-            maxDate.setDate(now.getDate() + 7);
+            maxDate.setDate(now.getDate() + 11);
             bookingDateEl.max = maxDate.toISOString().split('T')[0];
         }
 
