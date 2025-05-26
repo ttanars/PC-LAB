@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC|Booking Science LAB v1</title> <link rel="shortcut icon" type="image/png" href="https://img2.pic.in.th/pic/Pakchong_School-removebg-preview.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" xintegrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
@@ -15,11 +15,11 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
 
     <style>
-	
+
 			 .swal-modal .swal-text {
 				text-align: center;
 			}
-	
+
 			/* Custom class for larger SweetAlert with increased height and font size */
 			.swal2-popup.swal-custom-large {
 				width: 450px !important;    /* กำหนดความกว้างตามต้องการ */
@@ -63,7 +63,7 @@
 				font-size: 1em !important;
 				text-align: center;
 			}
-			
+
         body {
             font-family: 'Niramit', sans-serif;
             background-color: #f8f9fa;
@@ -86,77 +86,77 @@
         .nav-tabs > li.active > a:hover,
         .nav-tabs > li.active > a:focus { background-color: #007bff; color: white; border-color: #007bff; border-bottom-color: transparent; }
         .tab-content { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-top: none; background-color: #fff; border-radius: 0 0 4px 4px; }
-        
+
         .fc-event {
             cursor: pointer;
         }
-		
+
 		.fc .fc-toolbar-title {
-		  font-size: 1.1em; 
+		  font-size: 1.1em;
 		}
 		.fc .fc-button {
-		  font-size: 0.85em; 
-		  padding: 5px 8px;  
+		  font-size: 0.85em;
+		  padding: 5px 8px;
 		}
-		
+
 		.fc .fc-header-toolbar {
-		  background-color: #007bff; 
-		  color: white;            
-		  padding: 8px 5px;        
-		  margin-bottom: 0px;      
-		  border: 1px solid #007bff; 
+		  background-color: #007bff;
+		  color: white;
+		  padding: 8px 5px;
+		  margin-bottom: 0px;
+		  border: 1px solid #007bff;
 		}
 
 		.fc .fc-header-toolbar .fc-button {
-		  background-color: #0056b3; 
-		  border-color: #004085;    
-		  color: white;             
+		  background-color: #0056b3;
+		  border-color: #004085;
+		  color: white;
 		}
 
 		.fc .fc-header-toolbar .fc-button:hover,
 		.fc .fc-header-toolbar .fc-button:focus,
 		.fc .fc-header-toolbar .fc-button:active,
-		.fc .fc-header-toolbar .fc-button.fc-button-active { 
-		  background-color: #004085; 
+		.fc .fc-header-toolbar .fc-button.fc-button-active {
+		  background-color: #004085;
 		  border-color: #003065;
 		  color: white;
 		}
 
 		.fc .fc-header-toolbar .fc-toolbar-title {
-		  color: white !important; 
-		}
-		
-		.fc .fc-col-header-cell {
-		  background-color: #e9ecef; 
-		  color: #495057;            
+		  color: white !important;
 		}
 
-		.fc .fc-col-header-cell-cushion { 
-		  color: #495057; 
+		.fc .fc-col-header-cell {
+		  background-color: #e9ecef;
+		  color: #495057;
 		}
-		
+
+		.fc .fc-col-header-cell-cushion {
+		  color: #495057;
+		}
+
 		.modal {
 			text-align: center;
 			padding-left: 0 !important;
 			padding-right: 0 !important;
 		}
 
-		@media screen and (min-width: 768px) { 
+		@media screen and (min-width: 768px) {
 			.modal:before {
 				content: " ";
 				display: inline-block;
 				height: 100%;
 				vertical-align: middle;
-				margin-right: -4px; 
+				margin-right: -4px;
 			}
 		}
 
 		.modal-dialog {
 			display: inline-block;
-			text-align: left; 
+			text-align: left;
 			vertical-align: middle;
 		}
-		
+
 		.banner img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; display: block; background-color: #eee; border: 1px solid var(--border-color); }
     </style>
 </head>
@@ -165,12 +165,12 @@
         <div class="card shadow-sm border-primary position-relative" style="padding: 15px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
             <div class="card-body p-3 p-md-4">
                <div class="banner">
-                 <img src="https://lh5.googleusercontent.com/d/1Ihnlbpt0aCgC4rC7M8lIHymAQkkRnY1Q" alt="Form Banner"> </div>
-				 
+                 <img src="https://lh5.googleusercontent.com/d/1Ihnlbpt0aCgC4rC7M8lIHymAQkkRnY1Q" alt="แบนเนอร์ฟอร์ม"> </div>
+
 			<div class="container text-center mt-3 mb-3">
-            <marquee behavior="scroll" direction="left" style="color:#000000; font-size: 18px;margin-top: 2px; margin-bottom: 2px;" onmouseover="this.stop();" onmouseout="this.start();"><h3 style="margin-top: 2px; margin-bottom: 4px;"><img src="https://lh5.googleusercontent.com/d/1cD2nVKNscJg1DJPnkaakah7Nz4ez_BZS" height="12" width="25" >&nbsp;ยินดีต้อนรับเข้าสู่ระบบจองห้องปฏิบัติการวิทยาศาสตร์ โรงเรียนปากช่อง :: ออกแบบและพัฒนาโดย KT | Tanasarn Sirak&nbsp;<img src="https://lh5.googleusercontent.com/d/1cD2nVKNscJg1DJPnkaakah7Nz4ez_BZS" height="12" width="25" ></h3></marquee>
+            <marquee behavior="scroll" direction="left" style="color:#000000; font-size: 18px;margin-top: 2px; margin-bottom: 2px;" onmouseover="this.stop();" onmouseout="this.start();"><h3 style="margin-top: 2px; margin-bottom: 4px;"><img src="https://lh5.googleusercontent.com/d/1cD2nVKNscJg1DJPnkaakah7Nz4ez_BZS" height="12" width="25" > ยินดีต้อนรับเข้าสู่ระบบจองห้องปฏิบัติการวิทยาศาสตร์ โรงเรียนปากช่อง :: ออกแบบและพัฒนาโดย KT | Tanasarn Sirak <img src="https://lh5.googleusercontent.com/d/1cD2nVKNscJg1DJPnkaakah7Nz4ez_BZS" height="12" width="25" ></h3></marquee>
 			</div>
-				 
+
                 <div id="mainContent" >
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#bookingFormTab" aria-controls="bookingFormTab" role="tab" data-toggle="tab"><i class="fas fa-edit"></i> แบบฟอร์มการจอง</a></li>
@@ -187,7 +187,7 @@
                                     <form id="bookingForm">
                                         <div class="row">
                                             <div class="col-md-6" style="margin-bottom: 10px;">
-                                                <label for="requesterName"><i class="fas fa-user fa-bounce"></i> ชื่อผู้จอง</label>
+                                                <label for="requesterName" class="form-label fw-bold required-field"><i class="fas fa-user fa-bounce"></i> ชื่อผู้จอง</label>
                                                 <select class="form-control" id="requesterName" name="requesterName" required>
                                                     <option value="" disabled selected>เลือก...</option>
                                                     <option value="อ.ธนบดี">อ.ธนบดี</option>
@@ -232,7 +232,7 @@
                                                     <option value="ห้องปฏิบัติการชีววิทยา">ห้องปฏิบัติการชีววิทยา</option>
                                                 </select>
                                             </div>
-                                            
+
                                             <div class="col-md-6" style="margin-bottom: 10px;">
                                                 <label for="bookingDate"><i class="fas fa-calendar-alt fa-bounce"></i> วันที่จอง</label>
                                                 <input type="date" class="form-control" id="bookingDate" name="bookingDate" required>
@@ -285,10 +285,6 @@
                                             <div class="col-md-6" style="margin-bottom: 10px;">
                                                 <label for="materialsNeeded"><i class="fas fa-tools fa-bounce"></i> สิ่งที่ต้องการ</label>
                                                 <textarea class="form-control" id="materialsNeeded" name="materialsNeeded" rows="3" placeholder="ระบุรายการ"></textarea>
-                                            </div>
-                                            <div class="col-md-12" style="margin-bottom: 10px;">
-                                                <label for="directionLabFile"><i class="fas fa-file-upload fa-bounce"></i> แนบไฟล์ไดเรคชั่นแล็บ (ถ้ามี)</label>
-                                                <input type="file" class="form-control" id="directionLabFile" name="directionLabFile">
                                             </div>
                                             <div class="col-md-12" style="margin-bottom: 10px;">
                                                 <button type="submit" class="btn btn-primary btn-block btn-lg"><i class="fas fa-paper-plane"></i> ส่งข้อมูลการจอง</button>
@@ -358,8 +354,7 @@
                     <p><strong><i class="fas fa-chalkboard-teacher"></i> สอนห้อง:</strong> <span id="eventGrade"></span></p>
                     <p><strong><i class="fas fa-book"></i> หัวข้อ:</strong> <span id="eventTopic"></span></p>
                     <p><strong><i class="fas fa-tools"></i> สิ่งที่ต้องการ:</strong> <span id="eventMaterials"></span></p>
-                    <p><strong><i class="fas fa-file-alt"></i> ไฟล์ไดเรคชั่นแล็บ:</strong> <span id="eventDirectionLab"></span></p>
-                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
                 </div>
@@ -368,7 +363,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" xintegrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap.min.js"></script>
@@ -378,17 +373,18 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/th.js'></script>
 
     <script>
+        // << สำคัญ: กรุณาแทนที่ด้วย URL ของ Web App ที่ปรับใช้ (deployed) จาก Google Apps Script ของคุณ
         const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxLkTyNDbj1fGlA8Rsi4xPNiz6CBaUwt1fkFxTIfHQM2C-XpRM2mVxbSz6AkOic2r4/exec'; // << กรุณาแทนที่ด้วย URL ของ Web App ของคุณ
-        let mockBookings = [];
-        let calendarInstances = {}; 
-        let allFetchedBookings = [];
-        let validTeacherCodesStore = []; 
+        let mockBookings = []; // Used for client-side overlap check before submitting to server
+        let calendarInstances = {}; // To store FullCalendar instances
+        let allFetchedBookings = []; // To store all bookings fetched from the server
+        let validTeacherCodesStore = []; // To cache valid teacher codes
 
         async function fetchTeacherCodesFromServer() {
             Swal.fire({
                 title: 'กำลังโหลดข้อมูลรหัสครู...',
                 allowOutsideClick: false,
-				customClass: { 
+				customClass: {
                 popup: 'swal-custom-large'
             },
                 didOpen: () => { Swal.showLoading(); }
@@ -396,7 +392,7 @@
             try {
                 const response = await fetch(`${APPS_SCRIPT_WEB_APP_URL}?action=getTeacherCodes`);
                 if (!response.ok) {
-                    const errorData = await response.text(); 
+                    const errorData = await response.text();
                     throw new Error(`ไม่สามารถโหลดข้อมูลรหัสครูได้: ${response.status} - ${errorData.substring(0,100)}`);
                 }
                 const result = await response.json();
@@ -407,21 +403,23 @@
                 } else {
                     console.error("Fetch teacher codes error:", result.message || "Unknown error from server. Response:", result);
                     Swal.fire({title:'ข้อผิดพลาด', text: result.message || 'ไม่สามารถดึงข้อมูลรหัสครูจากเซิร์ฟเวอร์ได้', icon:'error', customClass: { popup: 'swal-custom-large' }});
-                    return null; 
+                    return null;
                 }
             } catch (error) {
                 console.error("Error fetching teacher codes:", error);
                 Swal.close();
                 Swal.fire({title:'ข้อผิดพลาดในการเชื่อมต่อ', text:`ไม่สามารถติดต่อเซิร์ฟเวอร์เพื่อดึงรหัสครูได้: ${error.message}`, icon:'error', customClass: { popup: 'swal-custom-large' }});
-                return null; 
+                return null;
             }
         }
 
         async function promptForTeacherCode() {
+            // Fetch teacher codes only if not already fetched or if the store is empty/null
             if (!validTeacherCodesStore || validTeacherCodesStore.length === 0) {
                 validTeacherCodesStore = await fetchTeacherCodesFromServer();
             }
 
+            // Handle failure to fetch teacher codes from the server
             if (validTeacherCodesStore === null) {
                 Swal.fire({
                     title: 'ข้อผิดพลาดในการโหลดข้อมูล',
@@ -431,9 +429,10 @@
                     allowEscapeKey: false,
                     customClass: { popup: 'swal-custom-large' }
                 });
-                return false;
+                return false; // Critical failure, cannot proceed
             }
 
+            // Handle case where no teacher codes are configured in the system
             if (validTeacherCodesStore.length === 0) {
                 Swal.fire({
                     icon: 'warning',
@@ -443,9 +442,10 @@
                     allowEscapeKey: false,
                     customClass: { popup: 'swal-custom-large' },
                 });
-                return false; 
+                return false; // Cannot proceed without codes
             }
 
+            // Loop to keep prompting for the code until valid input or unexpected dismissal
             while (true) {
                 const result = await Swal.fire({
                     title: 'กรุณาใส่รหัสครูผู้สอน',
@@ -457,11 +457,11 @@
                         autocapitalize: 'off',
                         autocorrect: 'off'
                     },
-                    allowOutsideClick: false,
-                    allowEscapeKey: false, 
+                    allowOutsideClick: false,    // Prevent closing by clicking outside
+                    allowEscapeKey: false,       // Prevent closing with Escape key
                     confirmButtonText: 'ตกลง',
-                    showCancelButton: true, 
-                    cancelButtonText: 'ยกเลิก',
+                    showCancelButton: true,      // Shows the cancel button
+                    cancelButtonText: 'ยกเลิก', // Text for the cancel button
                     showLoaderOnConfirm: true,
                     customClass: {
                         popup: 'swal-custom-large'
@@ -469,22 +469,37 @@
                     preConfirm: (code) => {
                         if (!code || !/^\d{4}$/.test(code)) {
                             Swal.showValidationMessage('รหัสครูต้องเป็นตัวเลข 4 หลัก');
-                            return false;
+                            return false; // Keeps the prompt open
                         }
                         if (!validTeacherCodesStore.includes(code)) {
                             Swal.showValidationMessage('รหัสครูไม่ถูกต้อง');
-                            return false; 
+                            return false; // Keeps the prompt open
                         }
-                        return code; 
+                        return code; // Code is valid
                     }
                 });
 
                 if (result.isConfirmed && result.value) {
+                    // User entered a valid code and clicked "ตกลง"
                     Swal.fire({ icon: 'success', title: 'ยืนยันรหัสสำเร็จ!', timer: 1000, showConfirmButton: false, customClass: { popup: 'swal-custom-large' } });
-                    return true; 
+                    return true; // Exit loop and function, authentication successful
                 } else if (result.isDismissed && result.dismiss === Swal.DismissReason.cancel) {
+                    // User clicked "ยกเลิก", the loop will continue, re-prompting.
                     console.log("User cancelled authentication prompt. Re-prompting.");
+                     // If user cancels, effectively authentication has failed for this attempt.
+                    // To prevent content loading, we can return false here or handle it after the loop.
+                    // For now, let's treat cancel as a failure to authenticate for this session.
+                     Swal.fire({
+                        icon: 'info',
+                        title: 'การยืนยันตัวตนถูกยกเลิก',
+                        text: 'คุณต้องยืนยันตัวตนเพื่อเข้าใช้งานระบบ',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        customClass: { popup: 'swal-custom-large' }
+                    });
+                    return false; // Exit function, authentication failed due to cancel
                 } else {
+                    // Handles unexpected dismissal
                     console.log("Authentication prompt dismissed unexpectedly or failed. Result:", result);
                      Swal.fire({
                         icon: 'error',
@@ -494,7 +509,7 @@
                         allowEscapeKey: false,
                         customClass: { popup: 'swal-custom-large' }
                     });
-                    return false;
+                    return false; // Exit function, authentication failed
                 }
             }
         }
@@ -521,17 +536,20 @@
                         function(settings, data, dataIndex) {
                             if (settings.nTable.id !== 'bookingTable') { return true; }
                             var filterDateVal = $('#filterDate').val();
-                            var tableDateCell = data[1]; 
-                            if (filterDateVal === '' || filterDateVal === null) { return true; }
-                            if (!tableDateCell) { return false; }
+                            var tableDateCell = data[1]; // Assuming Start Time is the second column (index 1)
+                            if (filterDateVal === '' || filterDateVal === null) { return true; } // No date filter
+                            if (!tableDateCell) { return false; } // No date in table cell
+
+                            // Attempt to parse date from table cell (format: DD/MM/YYYY HH:mm)
                             var tableDate = '';
-                            if (tableDateCell.includes('/')) { 
-                                const parts = tableDateCell.split(' ')[0].split('/');
+                            if (tableDateCell.includes('/')) { // Check if it's in DD/MM/BBBB format
+                                const parts = tableDateCell.split(' ')[0].split('/'); // Get date part and split
                                 if (parts.length === 3) {
+                                    // Convert to YYYY-MM-DD for comparison with input type="date"
                                     tableDate = `${parseInt(parts[2]) - 543}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
-                                } else { return false; }
-                            } else { 
-                                tableDate = tableDateCell.substring(0,10); 
+                                } else { return false; } // Invalid format
+                            } else { // Assume YYYY-MM-DD or ISO format from server (less likely for display)
+                                tableDate = tableDateCell.substring(0,10); // Take YYYY-MM-DD part
                             }
                             return tableDate === filterDateVal;
                         }
@@ -539,12 +557,13 @@
                     if ($.fn.DataTable.isDataTable('#bookingTable')) {
                         $('#bookingTable').DataTable().draw();
                     }
-                    $.fn.dataTable.ext.search.pop();
+                    $.fn.dataTable.ext.search.pop(); // Remove the temporary search function
                 });
             }
 
+            // Handle tab switching for responsive tables and calendar rendering/resizing
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                const targetTab = e.target.hash; 
+                const targetTab = e.target.hash; // Get the id of the activated tab
 
                 if (targetTab === '#bookingTableTab') {
                     if ($.fn.DataTable.isDataTable('#bookingTable')) {
@@ -554,6 +573,7 @@
                     if (calendarInstances['physicsCalendar'] && typeof calendarInstances['physicsCalendar'].updateSize === 'function') {
                         calendarInstances['physicsCalendar'].updateSize();
                     } else {
+                        // Initialize if not already, or re-render if needed
                         if (allFetchedBookings.length > 0 && document.getElementById('physicsCalendar')) {
                             const physicsBookings = allFetchedBookings.filter(b => b.labRequested === "ห้องปฏิบัติการฟิสิกส์");
                             initializeLabCalendar('physicsCalendar', physicsBookings, "ห้องปฏิบัติการฟิสิกส์");
@@ -583,36 +603,37 @@
 
 
         function initializePageContent() {
-            document.getElementById('mainContent').style.display = 'block';
-            initializePageEventListeners(); 
-            initializeDateAndSlotPickers(); 
-            fetchBookingsAndInitTable(); 
+            document.getElementById('mainContent').style.display = 'block'; // Show main content
+            initializePageEventListeners(); // Set up event listeners for form, filters, tabs
+            initializeDateAndSlotPickers(); // Set up date and time slot constraints
+            fetchBookingsAndInitTable(); // Fetch initial data and populate table/calendars
         }
 
-        document.addEventListener('DOMContentLoaded', async function(event) { // Added event parameter
-			event.preventDefault(); // Keep this if it was intended, though usually not needed for DOMContentLoaded on the document itself.
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Removed event.preventDefault(); as it's not standard in DOMContentLoaded
             console.log("DOMContentLoaded: Initiating teacher code authentication.");
             const isAuthenticated = await promptForTeacherCode();
+
             if (isAuthenticated) {
                 console.log("DOMContentLoaded: Authentication successful. Initializing page content.");
                 initializePageContent();
             } else {
                 console.log("DOMContentLoaded: Authentication failed. Page content will not be loaded.");
-                const mainContentDiv = document.getElementById('mainContent'); // Use ID
-                if (mainContentDiv) mainContentDiv.style.display = 'none'; // Hide main content, not the whole card
+                // Hide the main content area or display an authentication failed message
+                const mainContentDiv = document.getElementById('mainContent');
+                if (mainContentDiv) mainContentDiv.style.display = 'none';
+
                  const bodyElement = document.querySelector('body');
-                 if (bodyElement && !document.querySelector('#authFailedMessage')) { 
+                 if (bodyElement && !document.querySelector('#authFailedMessage')) {
                     const authFailedMessage = document.createElement('div');
                     authFailedMessage.id = 'authFailedMessage';
                     authFailedMessage.className = 'alert alert-danger text-center';
                     authFailedMessage.setAttribute('role', 'alert');
                     authFailedMessage.style.marginTop = '20px';
                     authFailedMessage.innerHTML = '<strong>การยืนยันตัวตนล้มเหลว!</strong> ไม่สามารถโหลดเนื้อหาของหน้าได้ กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง หรือติดต่อผู้ดูแลระบบ';
-                    
-                    const mainCard = document.querySelector('.card.shadow-sm');
-                    if(mainCard && mainCard.parentNode === bodyElement) { // Insert before the main card if possible
-                        bodyElement.insertBefore(authFailedMessage, mainCard);
-                    } else if (bodyElement.firstChild) { // Fallback to inserting as first child
+
+                    // Insert message at the top of the body
+                    if (bodyElement.firstChild) {
                         bodyElement.insertBefore(authFailedMessage, bodyElement.firstChild);
                     } else {
                         bodyElement.appendChild(authFailedMessage);
@@ -624,21 +645,30 @@
         function initializeDateAndSlotPickers() {
             const bookingDateEl = document.getElementById('bookingDate');
             const now = new Date();
-            const today = now.toISOString().split('T')[0]; 
-            bookingDateEl.min = today;
+
+            // Set min date to today
+            const todayYear = now.getFullYear();
+            const todayMonth = String(now.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+            const todayDay = String(now.getDate()).padStart(2, '0');
+            bookingDateEl.min = `${todayYear}-${todayMonth}-${todayDay}`;
+
+            // Set max date to 11 days from now
             const maxDate = new Date();
-            maxDate.setDate(now.getDate() + 11); // Allows booking up to 11 days from now
-            bookingDateEl.max = maxDate.toISOString().split('T')[0];
+            maxDate.setDate(now.getDate() + 11);
+            const maxYear = maxDate.getFullYear();
+            const maxMonth = String(maxDate.getMonth() + 1).padStart(2, '0');
+            const maxDay = String(maxDate.getDate()).padStart(2, '0');
+            bookingDateEl.max = `${maxYear}-${maxMonth}-${maxDay}`;
         }
 
 
-        function formatUserDate(isoString) {
+        function formatUserDate(isoString) { // For user display if needed, not currently used in table/calendar directly
             if (!isoString) return '';
             const date = new Date(isoString);
             return date.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: 'numeric' });
         }
 
-        function formatUserTime(isoString) {
+        function formatUserTime(isoString) { // For user display if needed
             if (!isoString) return '';
             const date = new Date(isoString);
             const hours = String(date.getHours()).padStart(2, '0');
@@ -646,28 +676,30 @@
             return `${hours}:${minutes} น.`;
         }
 
+        // Client-side overlap check (quick check before server validation)
         function checkBookingOverlap(lab, startDateTime, endDateTime, currentBookingId = null) {
             const newStart = new Date(startDateTime);
             const newEnd = new Date(endDateTime);
 
-            for (const booking of mockBookings) { 
-                if (booking.id === currentBookingId) continue;
+            for (const booking of mockBookings) { // mockBookings should be populated from fetched data
+                if (booking.id === currentBookingId) continue; // Skip self if editing (not implemented here)
                 if (booking.labRequested === lab) {
                     const existingStart = new Date(booking.startTime);
                     const existingEnd = new Date(booking.endTime);
+                    // Standard overlap condition: (StartA < EndB) and (EndA > StartB)
                     if (newStart < existingEnd && newEnd > existingStart) {
-                        return true; 
+                        return true; // Overlap found
                     }
                 }
             }
-            return false; 
+            return false; // No overlap
         }
 
         function getSelectedOptionText(selectElementId) {
             const selectElement = document.getElementById(selectElementId);
-            if (selectElement && selectElement.selectedIndex >= 0) { 
+            if (selectElement && selectElement.selectedIndex >= 0) {
                 if (selectElement.options[selectElement.selectedIndex].disabled) {
-                    return ''; 
+                    return ''; // Don't return text of disabled placeholder
                 }
                 return selectElement.options[selectElement.selectedIndex].text;
             }
@@ -676,24 +708,19 @@
 
 
         async function handleFormSubmit(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default form submission
 
             const lab = document.getElementById('labRequested').value;
             const selectedDate = document.getElementById('bookingDate').value;
-            const startTimeSlotValue = document.getElementById('startTimeSlot').value; 
-            const endTimeSlotValue = document.getElementById('endTimeSlot').value;   
-            
+            const startTimeSlotValue = document.getElementById('startTimeSlot').value; // e.g., "08:30-09:25"
+            const endTimeSlotValue = document.getElementById('endTimeSlot').value;   // e.g., "09:25-10:20"
+
             const requesterName = document.getElementById('requesterName').value;
             const fieldOfStudy = document.getElementById('fieldOfStudy').value;
             const studentGrade = document.getElementById('studentGrade').value;
-            const studentCount = document.getElementById('studentCount').value || "ไม่ได้ระบุ"; 
-            const topic = document.getElementById('topic').value || "ไม่ได้ระบุ"; 
-            const materialsNeeded = document.getElementById('materialsNeeded').value || "ไม่มี"; 
-
-            // --- MODIFIED: Get the file and its name for Swal ---
-            const directionLabFile = document.getElementById('directionLabFile').files[0];
-            const directionLabFileNameForSwal = directionLabFile ? directionLabFile.name : "ไม่ได้แนบ";
-            // --- END MODIFIED ---
+            const studentCount = document.getElementById('studentCount').value || "ไม่ได้ระบุ"; // Default if empty
+            const topic = document.getElementById('topic').value || "ไม่ได้ระบุ"; // Default if empty
+            const materialsNeeded = document.getElementById('materialsNeeded').value || "ไม่มี"; // Default if empty
 
             const startTimeSlotText = getSelectedOptionText('startTimeSlot');
             const endTimeSlotText = getSelectedOptionText('endTimeSlot');
@@ -709,181 +736,182 @@
                 return;
             }
 
-            const startTimeString = selectedDate + 'T' + startTimeSlotValue.split('-')[0] + ':00';
-            const endTimeString = selectedDate + 'T' + endTimeSlotValue.split('-')[1] + ':00';
+            // Construct ISO-like datetime strings for server
+            const startTimeString = selectedDate + 'T' + startTimeSlotValue.split('-')[0] + ':00'; // Takes start part of slot
+            const endTimeString = selectedDate + 'T' + endTimeSlotValue.split('-')[1] + ':00';   // Takes end part of slot
 
             const startDate = new Date(startTimeString);
             const endDate = new Date(endTimeString);
             const now = new Date();
-            const todayForPastCheck = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const todayForComparison = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
 
-            if (startDate < todayForPastCheck) { // Check against start of today, time can be current day but future time.
-                 Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: 'ไม่สามารถเลือกวันเริ่มต้นในอดีตได้ กรุณาเลือกวันและเวลาในอนาคต', customClass: { popup: 'swal-custom-large' } });
+            if (startDate < todayForComparison) { // Compare date part only for past booking
+                 Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: 'ไม่สามารถเลือกวัน/เวลาเริ่มต้นในอดีตได้ กรุณาเลือกวันและเวลาปัจจุบันหรือในอนาคต', customClass: { popup: 'swal-custom-large' } });
                  return;
             }
-             if (startDate < now && startDate.toDateString() === now.toDateString()) { // If it's today, but time is in the past
-                Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: 'ไม่สามารถเลือกเวลาเริ่มต้นในอดีตของวันนี้ได้', customClass: { popup: 'swal-custom-large' }});
-                return;
-            }
-
 
             if (endDate <= startDate) {
                 Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: 'คาบเรียนสิ้นสุดต้องอยู่หลังคาบเรียนเริ่มต้น', customClass: { popup: 'swal-custom-large' } });
                 return;
             }
-            
+
             const bookingDateEl = document.getElementById('bookingDate');
-            const maxAllowedBookingDate = new Date(bookingDateEl.max + "T23:59:59");
-            if (new Date(selectedDate) > maxAllowedBookingDate) {
+            const maxAllowedBookingDate = new Date(bookingDateEl.max + "T23:59:59"); // End of the max allowed day
+            if (new Date(selectedDate) > maxAllowedBookingDate) { // Compare selected date with max allowed date
                 Swal.fire({ icon: 'error', title: 'เวลาไม่ถูกต้อง', text: `สามารถจองล่วงหน้าได้ไม่เกินวันที่ ${new Date(bookingDateEl.max).toLocaleDateString('th-TH', {day:'numeric', month:'long', year:'numeric'})} เท่านั้น`, customClass: { popup: 'swal-custom-large' } });
                 return;
             }
 
+            // Client-side overlap check (optional, server will do final check)
             if (checkBookingOverlap(lab, startTimeString, endTimeString)) {
                 Swal.fire({
                     icon: 'warning',
-                    title: 'ไม่สามารถจองได้',
-                    text: `${lab} ไม่ว่างในช่วงเวลาที่คุณเลือก กรุณาตรวจสอบตารางหรือปฏิทินและเลือกเวลาอื่น`,
+                    title: 'อาจมีการจองซ้อนทับ (ตรวจสอบฝั่ง Client)',
+                    text: `${lab} อาจไม่ว่างในช่วงเวลาที่คุณเลือก (ข้อมูลล่าสุดอาจยังไม่ได้โหลด) กรุณาตรวจสอบตารางหรือปฏิทิน และยืนยันหากต้องการดำเนินการต่อ หรือยกเลิกเพื่อตรวจสอบ`,
+                    showCancelButton: true,
+                    confirmButtonText: 'ดำเนินการจองต่อ',
+                    cancelButtonText: 'ยกเลิกและตรวจสอบ',
                     customClass: { popup: 'swal-custom-large' }
+                }).then(async (proceedResult) => {
+                    if (proceedResult.isConfirmed) {
+                        submitToServer(); // Proceed to submit
+                    } else {
+                         Swal.fire({ title: 'ยกเลิกแล้ว', text: 'การจองของคุณยังไม่ได้ถูกบันทึก', icon: 'info', customClass: { popup: 'swal-custom-large' }});
+                    }
                 });
-                return;
+                return; // Wait for user decision on overlap warning
             }
 
-            const confirmationHtml = `
-                <div style="text-align: left; padding-left: 10px; font-size: 0.95em;">
-                    <p><strong><i class="fas fa-user"></i> ผู้จอง:</strong> ${requesterName}</p>
-                    <p><strong><i class="fas fa-atom"></i> สาขา:</strong> ${fieldOfStudy}</p>
-                    <p><strong><i class="fas fa-microscope"></i> ห้อง:</strong> ${lab}</p>
-                    <p><strong><i class="fas fa-calendar-alt"></i> วันที่:</strong> ${new Date(selectedDate).toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                    <p><strong><i class="fas fa-clock"></i> เริ่ม:</strong> ${startTimeSlotText}</p>
-                    <p><strong><i class="fas fa-clock"></i> สิ้นสุด:</strong> ${endTimeSlotText}</p>
-                    <p><strong><i class="fas fa-chalkboard-teacher"></i> สอนห้อง:</strong> ${studentGrade}</p>
-                    <p><strong><i class="fas fa-users"></i> นร.:</strong> ${studentCount}</p>
-                    <p><strong><i class="fas fa-book"></i> หัวข้อ:</strong> ${topic}</p>
-                    <p><strong><i class="fas fa-tools"></i> สิ่งที่ต้องการ:</strong> ${materialsNeeded}</p>
-                    <p><strong><i class="fas fa-file-alt"></i> ไฟล์ไดเรคชั่น:</strong> ${directionLabFileNameForSwal}</p> </div>
-            `;
+            // If no client-side overlap or user chose to proceed, confirm and submit
+            confirmAndSubmit();
 
-            Swal.fire({
-                title: 'ยืนยันข้อมูลการจอง',
-                html: confirmationHtml,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'ยืนยันการจอง',
-                cancelButtonText: 'ยกเลิก',
-                customClass: {
-                    popup: 'swal-custom-large', 
-                    htmlContainer: 'swal-custom-large .swal2-html-container' 
-                }
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    // const originalFormData = new FormData(event.target); // Using event.target to get the form.
-                    const submissionFormData = new FormData(); // Create a fresh FormData
+            async function confirmAndSubmit() {
+                 const confirmationHtml = `
+                    <div style="text-align: left; padding-left: 10px; font-size: 0.95em;">
+                        <p><strong><i class="fas fa-user"></i> ผู้จอง:</strong> ${requesterName}</p>
+                        <p><strong><i class="fas fa-atom"></i> สาขา:</strong> ${fieldOfStudy}</p>
+                        <p><strong><i class="fas fa-microscope"></i> ห้อง:</strong> ${lab}</p>
+                        <p><strong><i class="fas fa-calendar-alt"></i> วันที่:</strong> ${new Date(selectedDate).toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                        <p><strong><i class="fas fa-clock"></i> เริ่ม:</strong> ${startTimeSlotText}</p>
+                        <p><strong><i class="fas fa-clock"></i> สิ้นสุด:</strong> ${endTimeSlotText}</p>
+                        <p><strong><i class="fas fa-chalkboard-teacher"></i> สอนห้อง:</strong> ${studentGrade}</p>
+                        <p><strong><i class="fas fa-users"></i> นร.:</strong> ${studentCount}</p>
+                        <p><strong><i class="fas fa-book"></i> หัวข้อ:</strong> ${topic}</p>
+                        <p><strong><i class="fas fa-tools"></i> สิ่งที่ต้องการ:</strong> ${materialsNeeded}</p>
+                    </div>
+                `;
 
-                    // Append all basic form fields from the form itself
-                    const formElements = event.target.elements;
-                    for (let i = 0; i < formElements.length; i++) {
-                        const element = formElements[i];
-                        if (element.name && element.type !== 'file' && element.type !== 'submit') {
-                             if(element.type === 'select-multiple') {
-                                for(let j = 0; j < element.options.length; j++) {
-                                    if(element.options[j].selected) {
-                                        submissionFormData.append(element.name, element.options[j].value);
-                                    }
-                                }
-                            } else {
-                                submissionFormData.append(element.name, element.value);
-                            }
-                        }
+                Swal.fire({
+                    title: 'ยืนยันข้อมูลการจอง',
+                    html: confirmationHtml,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'ยืนยันการจอง',
+                    cancelButtonText: 'ยกเลิก',
+                    customClass: {
+                        popup: 'swal-custom-large',
+                        htmlContainer: 'swal-custom-large .swal2-html-container'
                     }
-                    
-                    submissionFormData.set('startTime', startTimeString);
-                    submissionFormData.set('endTime', endTimeString);
-                    submissionFormData.delete('bookingDate'); // Remove as these are combined into startTime/endTime
-                    submissionFormData.delete('startTimeSlot');
-                    submissionFormData.delete('endTimeSlot');
-
-					// --- MODIFIED: Get the file and its name for Swal ---
-					const directionLabFile = document.getElementById('directionLabFile').files[0];
-					// ...
-					// --- MODIFIED: Append file to submissionFormData ---
-					if (directionLabFile) { // directionLabFile was defined earlier
-						submissionFormData.append('directionLabFile', directionLabFile, directionLabFile.name);
-					}
-					// --- END MODIFIED ---
-
-                    Swal.fire({
-                        title: 'กำลังส่งข้อมูล...',
-                        text: 'กรุณารอสักครู่',
-                        allowOutsideClick: false,
-                        customClass: { popup: 'swal-custom-large' },
-                        didOpen: () => { Swal.showLoading(); }
-                    });
-
-                    try {
-                        const response = await fetch(APPS_SCRIPT_WEB_APP_URL, { method: 'POST', body: submissionFormData });
-                        if (!response.ok) {
-                            let errorText = `HTTP error! Status: ${response.status}`;
-                            try { const errorResult = await response.json(); errorText = errorResult.message || errorText; } 
-							catch (e) { /* Use existing errorText */ }
-                            throw new Error(errorText);
-                        }
-                        const serverResult = await response.json();
-                        Swal.close(); 
-                        if (serverResult.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'จองสำเร็จ!',
-                                text: serverResult.message || 'ข้อมูลการจองของคุณถูกบันทึกแล้ว',
-                                customClass: { popup: 'swal-custom-large' }
-                            });
-                            event.target.reset(); // This will reset the form, including the file input
-                            initializeDateAndSlotPickers();
-                            fetchBookingsAndInitTable(); 
-                            $('.nav-tabs a[href="#bookingTableTab"]').tab('show');
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'การจองไม่สำเร็จ',
-                                text: serverResult.message || 'ไม่สามารถบันทึกข้อมูลการจองได้ กรุณาลองใหม่อีกครั้ง',
-                                customClass: { popup: 'swal-custom-large' }
-                            });
-                        }
-                    } catch (error) {
-                        Swal.close(); 
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+                        submitToServer();
+                    } else {
                         Swal.fire({
-                            icon: 'error',
-                            title: 'เกิดข้อผิดพลาดในการเชื่อมต่อ',
-                            text: 'ไม่สามารถติดต่อเซิร์ฟเวอร์ได้: ' + error.message,
+                            title: 'ยกเลิกแล้ว',
+                            text: 'การจองของคุณยังไม่ได้ถูกบันทึก',
+                            icon: 'info',
                             customClass: { popup: 'swal-custom-large' }
                         });
                     }
-                } else {
+                });
+            }
+
+
+            async function submitToServer() {
+                const originalFormData = new FormData(event.target); // Get form that triggered event
+                const submissionFormData = new FormData();
+
+                // Copy relevant fields, ensuring correct names for Apps Script
+                for (let [key, value] of originalFormData.entries()) {
+                    submissionFormData.append(key, value);
+                }
+
+                // Replace date/slot fields with combined ISO-like strings
+                submissionFormData.set('startTime', startTimeString);
+                submissionFormData.set('endTime', endTimeString);
+                submissionFormData.delete('bookingDate'); // Remove original separate date
+                submissionFormData.delete('startTimeSlot'); // Remove original start slot
+                submissionFormData.delete('endTimeSlot');   // Remove original end slot
+
+                Swal.fire({
+                    title: 'กำลังส่งข้อมูล...',
+                    text: 'กรุณารอสักครู่',
+                    allowOutsideClick: false,
+                    customClass: { popup: 'swal-custom-large' },
+                    didOpen: () => { Swal.showLoading(); }
+                });
+
+                try {
+                    const response = await fetch(APPS_SCRIPT_WEB_APP_URL, { method: 'POST', body: submissionFormData });
+                    if (!response.ok) {
+                        let errorText = `HTTP error! Status: ${response.status}`;
+                        try { const errorResult = await response.json(); errorText = errorResult.message || errorText; }
+						catch (e) { /* Use existing errorText if response is not JSON */ }
+                        throw new Error(errorText);
+                    }
+                    const serverResult = await response.json();
+                    Swal.close();
+                    if (serverResult.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'จองสำเร็จ!',
+                            text: serverResult.message || 'ข้อมูลการจองของคุณถูกบันทึกแล้ว',
+                            customClass: { popup: 'swal-custom-large' }
+                        });
+                        event.target.reset(); // Reset the form
+                        initializeDateAndSlotPickers(); // Re-initialize date pickers
+                        fetchBookingsAndInitTable(); // Re-fetch and update all views
+                        $('.nav-tabs a[href="#bookingTableTab"]').tab('show'); // Optionally switch to table view
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'การจองไม่สำเร็จ',
+                            text: serverResult.message || 'ไม่สามารถบันทึกข้อมูลการจองได้ กรุณาลองใหม่อีกครั้ง',
+                            customClass: { popup: 'swal-custom-large' }
+                        });
+                    }
+                } catch (error) {
+                    Swal.close();
                     Swal.fire({
-                        title: 'ยกเลิกแล้ว',
-                        text: 'การจองของคุณยังไม่ได้ถูกบันทึก',
-                        icon: 'info',
+                        icon: 'error',
+                        title: 'เกิดข้อผิดพลาดในการเชื่อมต่อ',
+                        text: 'ไม่สามารถติดต่อเซิร์ฟเวอร์ได้: ' + error.message,
                         customClass: { popup: 'swal-custom-large' }
                     });
                 }
-            });
+            }
         }
+
 
         function formatTableDateTime(dateTimeString) {
             if (!dateTimeString) return '';
             const date = new Date(dateTimeString);
-            return date.toLocaleString('th-TH', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replace(',', '');
+            // Format to DD/MM/YYYY HH:mm (Thai locale for date part, 24hr for time)
+            return date.toLocaleString('th-TH', {
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', hour12: false
+            }).replace(',', ''); // Remove comma often inserted by toLocaleString
         }
 
         function getLabColor(labName) {
-            if (!labName) return '#777777';
-            if (labName.includes('ฟิสิกส์')) return '#007bff';
-            if (labName.includes('เคมี')) return '#ffc107';
-            if (labName.includes('ชีววิทยา')) return '#28a745';
-            return '#6c757d';
+            if (!labName) return '#777777'; // Default color
+            if (labName.includes('ฟิสิกส์')) return '#007bff'; // Blue for Physics
+            if (labName.includes('เคมี')) return '#ffc107';   // Yellow for Chemistry
+            if (labName.includes('ชีววิทยา')) return '#28a745'; // Green for Biology
+            return '#6c757d'; // Grey for others
         }
 
         function initializeLabCalendar(elementId, specificLabBookings, labNameDisplay) {
@@ -894,30 +922,30 @@
             }
 
             const events = specificLabBookings.map(booking => ({
-                id: booking.bookingID || booking.id, // Ensure 'id' is preferred for FullCalendar
+                id: booking.bookingID || booking.id, // Use bookingID or id from fetched data
                 title: `${(booking.labRequested || labNameDisplay).replace('ห้องปฏิบัติการ', '').trim()} (${booking.requesterName || 'N/A'}) - ${booking.studentGrade || ''}`,
-                start: booking.startTime,
-                end: booking.endTime,
+                start: booking.startTime, // Should be ISO string from server
+                end: booking.endTime,     // Should be ISO string from server
                 extendedProps: {
                     lab: booking.labRequested,
                     requester: booking.requesterName,
                     grade: booking.studentGrade,
                     topic: booking.topic,
                     materials: booking.materialsNeeded,
-                    directionLabUrl: booking.directionLabURL, // <-- MODIFIED: Get from booking data (camelCased from Apps Script)
-                    startTimeFull: booking.startTime,
-                    endTimeFull: booking.endTime
+                    startTimeFull: booking.startTime, // Store original ISO string
+                    endTimeFull: booking.endTime     // Store original ISO string
                 },
-                color: getLabColor(booking.labRequested) 
+                color: getLabColor(booking.labRequested) // Assign color based on lab
             }));
 
+            // If a calendar instance already exists for this element, destroy it first
             if (calendarInstances[elementId]) {
                 calendarInstances[elementId].destroy();
             }
 
             calendarInstances[elementId] = new FullCalendar.Calendar(calendarEl, {
-                locale: 'th',
-                initialView: 'listWeek', 
+                locale: 'th', // Set locale to Thai
+                initialView: 'listWeek', // Good default for seeing bookings
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -928,27 +956,18 @@
                     const props = info.event.extendedProps;
                     document.getElementById('eventLab').textContent = props.lab || '-';
                     document.getElementById('eventRequester').textContent = props.requester || '-';
-                    document.getElementById('eventStart').textContent = formatTableDateTime(props.startTimeFull);
-                    document.getElementById('eventEnd').textContent = formatTableDateTime(props.endTimeFull);
+                    document.getElementById('eventStart').textContent = formatTableDateTime(props.startTimeFull); // Format for display
+                    document.getElementById('eventEnd').textContent = formatTableDateTime(props.endTimeFull);   // Format for display
                     document.getElementById('eventGrade').textContent = props.grade || '-';
                     document.getElementById('eventTopic').textContent = props.topic || '-';
                     document.getElementById('eventMaterials').textContent = props.materials || '-';
-                    
-                    // --- MODIFIED: Display Direction Lab Link in Modal ---
-                    const eventDirectionLabSpan = document.getElementById('eventDirectionLab');
-                    if (props.directionLabUrl && typeof props.directionLabUrl === 'string' && props.directionLabUrl.startsWith('http')) {
-                        eventDirectionLabSpan.innerHTML = '<a href="' + props.directionLabUrl + '" target="_blank" rel="noopener noreferrer">ดูไฟล์</a>';
-                    } else {
-                        eventDirectionLabSpan.textContent = props.directionLabUrl ? props.directionLabUrl : 'ไม่มี'; // Handles "Upload Error" or empty
-                    }
-                    // --- END MODIFIED ---
                     $('#eventDetailModal').modal('show');
                 },
-                slotMinTime: '08:00:00',
-                slotMaxTime: '18:00:00',
-                height: 'auto', 
-                contentHeight: 450, 
-                stickyHeaderDates: true,
+                slotMinTime: '08:00:00', // Display from 8 AM
+                slotMaxTime: '18:00:00', // Display until 6 PM
+                height: 'auto', // Adjust height automatically
+                contentHeight: 450, // Fixed content height for scroll
+                stickyHeaderDates: true, // Keep header dates visible when scrolling
                 eventTimeFormat: { hour: '2-digit', minute: '2-digit', hour12: false, meridiem: false }
             });
 
@@ -962,42 +981,52 @@
 
 
         async function fetchBookingsAndInitTable() {
-			 Swal.fire({ // Changed to use a "loading" or "processing" type of alert initially
+			 Swal.fire({ // Using Swal directly as Swal is defined globally by its script include
 				  title: "กำลังโหลดข้อมูลการจอง...",
                   allowOutsideClick: false,
-                  customClass: { popup: 'swal-custom-large' },
+                  customClass: { popup: 'swal-custom-large'},
 				  didOpen: () => { Swal.showLoading(); }
 				});
-		
+
             try {
-                const response = await fetch(APPS_SCRIPT_WEB_APP_URL); 
+                const response = await fetch(APPS_SCRIPT_WEB_APP_URL); // GET request by default
                 if (!response.ok) {
                     const errorText = await response.text();
                     throw new Error(`HTTP error when fetching bookings! Status: ${response.status}. ${errorText.substring(0,200)}`);
                 }
                 let fetchedBookingsFromServer = await response.json();
+
+                // Ensure fetchedBookingsFromServer is an array
                 if (!Array.isArray(fetchedBookingsFromServer)) {
-                    if (typeof fetchedBookingsFromServer === 'object' && fetchedBookingsFromServer !== null && Array.isArray(fetchedBookingsFromServer.bookings)) {
-                        fetchedBookingsFromServer = fetchedBookingsFromServer.bookings;
-                    } else if (typeof fetchedBookingsFromServer === 'object' && fetchedBookingsFromServer !== null && typeof fetchedBookingsFromServer.message === 'string' && !fetchedBookingsFromServer.success) {
-                        console.warn("Server returned an error message:", fetchedBookingsFromServer.message);
-                        // fetchedBookingsFromServer = []; // Keep it as is so the error message can be displayed if needed
-                        throw new Error(fetchedBookingsFromServer.message); 
-                    }
-                    else {
-                        console.warn("Bookings data is not an array, using empty array. Raw data:", fetchedBookingsFromServer);
-                        fetchedBookingsFromServer = [];
+                    // Handle cases where server might return an object with a 'bookings' array or an error object
+                    if (typeof fetchedBookingsFromServer === 'object' && fetchedBookingsFromServer !== null) {
+                        if (Array.isArray(fetchedBookingsFromServer.bookings)) {
+                            fetchedBookingsFromServer = fetchedBookingsFromServer.bookings;
+                        } else if (typeof fetchedBookingsFromServer.message === 'string' && !fetchedBookingsFromServer.success) {
+                            // This case implies the server itself sent a structured error message
+                            console.warn("Server returned an error message object:", fetchedBookingsFromServer.message);
+                            throw new Error(fetchedBookingsFromServer.message); // Propagate server's error message
+                        } else {
+                             // If it's an object but not the expected structure, treat as an error or empty.
+                            console.warn("Bookings data from server is not a direct array or recognized error structure. Raw data:", fetchedBookingsFromServer);
+                            fetchedBookingsFromServer = []; // Default to empty array to prevent further errors
+                        }
+                    } else {
+                        console.warn("Bookings data from server is not an array. Raw data:", fetchedBookingsFromServer);
+                        fetchedBookingsFromServer = []; // Default to empty array
                     }
                 }
-                allFetchedBookings = fetchedBookingsFromServer;
-				console.log("First fetched booking object on client:", allFetchedBookings[0]);
-                 mockBookings = allFetchedBookings.map(b => ({ 
-                    id: b.bookingID || b.id || (b.extendedProps ? b.extendedProps.id : undefined), 
-                    labRequested: b.labRequested || (b.extendedProps ? b.extendedProps.lab : undefined), 
-                    startTime: b.startTime || (b.extendedProps ? b.extendedProps.startTimeFull : undefined), 
+
+                allFetchedBookings = fetchedBookingsFromServer; // Store all fetched bookings
+
+                // Populate mockBookings for client-side overlap check (simplified version)
+                 mockBookings = allFetchedBookings.map(b => ({
+                    id: b.bookingID || b.id || (b.extendedProps ? b.extendedProps.id : undefined), // Ensure an ID
+                    labRequested: b.labRequested || (b.extendedProps ? b.extendedProps.lab : undefined),
+                    startTime: b.startTime || (b.extendedProps ? b.extendedProps.startTimeFull : undefined),
                     endTime: b.endTime || (b.extendedProps ? b.extendedProps.endTimeFull: undefined)
-                })).filter(b => b.startTime && b.endTime); 
-                
+                })).filter(b => b.startTime && b.endTime); // Filter out any invalid entries
+
                 const isDataTable = $.fn.DataTable.isDataTable('#bookingTable');
                 if (isDataTable) {
                     $('#bookingTable').DataTable().clear().rows.add(allFetchedBookings).draw();
@@ -1010,28 +1039,15 @@
                             { data: 'endTime', title: 'วัน/เวลาสิ้นสุด', render: data => formatTableDateTime(data) },
                             { data: 'requesterName', title: 'ชื่อผู้ขอใช้' },
                             { data: 'studentGrade', title: 'สอนนักเรียน ชั้น' },
-                            { data: 'topic', title: 'หัวข้อการสอน/ปฏิบัติการ' }, // Added topic
-                            { data: 'materialsNeeded', title: 'วัสดุ/อุปกรณ์/สารเคมี' },
-                             // --- MODIFIED: Added Column for Direction Lab File ---
-                            { 
-                                data: 'directionLabURL', // Key from Apps Script (camelCased from DirectionLabURL)
-                                title: 'ไฟล์ไดเรคชั่นแล็บ',
-                                render: function(data, type, row) {
-                                    if (data && typeof data === 'string' && data.startsWith('http')) {
-                                        return '<a href="' + data + '" target="_blank" rel="noopener noreferrer">ดูไฟล์</a>';
-                                    }
-                                    // Display content if it's not a URL (e.g., "File Upload Error..." or "Drive Folder ID not configured")
-                                    // Or "ไม่มี" if data is null/empty
-                                    return data ? data : 'ไม่มี'; 
-                                }
-                            }
-                            // --- END MODIFIED ---
+                            { data: 'topic', title: 'หัวข้อการสอน' }, // Added Topic column
+                            { data: 'materialsNeeded', title: 'วัสดุ/อุปกรณ์/สารเคมี' }
                         ],
-                        responsive: true, order: [[1, 'desc']],
+                        responsive: true, order: [[1, 'desc']], // Default sort by start time descending
                         language: { url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Thai.json' },
                     });
                 }
-                
+
+                // Initialize or update calendars
                 if (document.getElementById('physicsCalendar') && document.getElementById('chemistryCalendar') && document.getElementById('biologyCalendar')) {
                     const physicsBookings = allFetchedBookings.filter(b => b.labRequested === "ห้องปฏิบัติการฟิสิกส์");
                     initializeLabCalendar('physicsCalendar', physicsBookings, "ห้องปฏิบัติการฟิสิกส์");
@@ -1045,34 +1061,42 @@
                     console.warn("One or more lab calendar elements not found when trying to initialize after fetching bookings.");
                 }
 
-                if ($('#bookingTableTab').hasClass('active') || !isDataTable) { 
-                     setTimeout(function() { 
+                // Adjust DataTable layout if the tab is active or if it was just initialized
+                if ($('#bookingTableTab').hasClass('active') || !isDataTable) {
+                     setTimeout(function() { // Delay to ensure tab content is visible
                          if($.fn.DataTable.isDataTable('#bookingTable')){
                             $($.fn.dataTable.tables(true)).DataTable().responsive.recalc().columns.adjust();
                          }
-                    }, 250); 
+                    }, 250);
                 }
-                Swal.close(); 
+                Swal.close(); // Close the "Loading..." Swal
             } catch (error) {
                 console.error("Error in fetchBookingsAndInitTable:", error);
                 Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาดในการโหลดข้อมูล', text: 'ไม่สามารถดึงข้อมูลการจองได้: ' + error.message, customClass: { popup: 'swal-custom-large' } });
-                if (!$.fn.DataTable.isDataTable('#bookingTable')) { // Initialize empty table on error if not already initialized
-                    $('#bookingTable').DataTable({ 
-                        responsive: true, 
-                        searching: false, 
-                        data: [], 
-                        columns: [ 
-                            { title: 'ห้องปฏิบัติการ' }, { title: 'วัน/เวลาเริ่มต้น'}, { title: 'วัน/เวลาสิ้นสุด'}, 
-                            { title: 'ชื่อผู้ขอใช้' }, { title: 'สอนนักเรียน ชั้น' }, { title: 'หัวข้อการสอน/ปฏิบัติการ' },
-                            { title: 'วัสดุ/อุปกรณ์/สารเคมี' }, { title: 'ไฟล์ไดเรคชั่นแล็บ' } 
-                        ], 
-                        language: { url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Thai.json', emptyTable: "ไม่สามารถโหลดข้อมูลการจองได้ หรือยังไม่มีการจอง ("+error.message+")" } 
+
+                // Initialize DataTable with an error message if it's not already a DataTable
+                if (!$.fn.DataTable.isDataTable('#bookingTable')) {
+                    $('#bookingTable').DataTable({
+                        responsive: true,
+                        searching: false,
+                        data: [],
+                        columns: [
+                            { title: 'ห้องปฏิบัติการที่ขอใช้' }, { title: 'วัน/เวลาเริ่มต้น'},
+                            { title: 'วัน/เวลาสิ้นสุด'}, { title: 'ชื่อผู้ขอใช้' },
+                            { title: 'สอนนักเรียน ชั้น' }, { title: 'หัวข้อการสอน'},
+                            { title: 'วัสดุ/อุปกรณ์/สารเคมี' }
+                        ],
+                        language: {
+                            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Thai.json',
+                            emptyTable: "ไม่สามารถโหลดข้อมูลการจองได้ หรือยังไม่มีการจอง"
+                        }
                     });
                 }
+                // Display error messages in calendar areas
                 const calendarIds = ['physicsCalendar', 'chemistryCalendar', 'biologyCalendar'];
                 calendarIds.forEach(id => {
                     const calEl = document.getElementById(id);
-                    if (calEl && (!calendarInstances[id] || !calEl.querySelector('.fc-view-harness'))) { 
+                    if (calEl && (!calendarInstances[id] || !calEl.querySelector('.fc-view-harness'))) { // Check if not already rendered
                         calEl.innerHTML = `<div class="alert alert-warning text-center" style="margin-top:10px;">ไม่สามารถโหลดข้อมูลปฏิทินได้ (${error.message}) หรือยังไม่มีข้อมูล</div>`;
                     }
                 });
