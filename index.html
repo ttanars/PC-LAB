@@ -235,8 +235,8 @@
                     <form @submit.prevent="handleFormSubmitAttempt" id="bookingForm" class="needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="userPIN" class="form-label"><i class="fa-solid fa-key fa-bounce"></i> รหัสประจำผู้จอง</label>
-                                <input type="password" id="userPIN" v-model="formData.userPIN" @blur="fetchUserNameByPIN" class="form-control" required>
+                                <label for="userPIN" class="form-label"><i class="fa-solid fa-key fa-bounce"></i> รหัสผู้จอง</label>
+                                <input type="tel" id="userPIN" v-model="formData.userPIN" @blur="fetchUserNameByPIN" class="form-control" required>
                                 <div class="invalid-feedback" id="userPINFeedback">
                                     กรุณากรอกรหัสประจำผู้จอง
                                 </div>
